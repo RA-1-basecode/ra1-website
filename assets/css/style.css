@@ -1086,6 +1086,13 @@ a:hover {
   }
 }
 
+/* intro title slogan */
+@media (min-width: 992px) {
+  .intro .slogan {
+    font-size: 25px;
+  }
+}
+
 .intro .intro-subtitle {
   font-size: 1.5rem;
   font-weight: 300;
