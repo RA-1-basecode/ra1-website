@@ -321,27 +321,58 @@ a:hover {
   padding-bottom: 4rem;
 }
 
-.title-a {
-  text-decoration: none;
-  font-size: 2.6rem;
-  font-weight: 600;
+@media (min-width: 992px) {
+  .title-a {
+    text-decoration: none;
+    font-size: 2.6rem;
+    font-weight: 600;
+  }
 }
 
-.title-link {
-  font-size: 1.2rem;
-  font-weight: 300;
-  padding-top: 1.2rem;
+@media (max-width) {
+  .title-a {
+    text-decoration: none;
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
 }
 
-.title-link a {
-  text-decoration: none;
-  color: #313131;
+@media (min-width: 992px) {
+  .title-link {
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding-top: 1.2rem;
+  }
+
+  .title-link a {
+    text-decoration: none;
+    color: #313131;
+  }
+
+  .title-link span {
+    font-size: 20px;
+    padding-left: 4px;
+    vertical-align: middle;
+  }
 }
 
-.title-link span {
-  font-size: 20px;
-  padding-left: 4px;
-  vertical-align: middle;
+@media (max-width: 768px) {
+  .title-link {
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding-top: 1.2rem;
+  }
+
+  .title-link a {
+    text-decoration: none;
+    color: #313131;
+  }
+
+  .title-link span {
+    font-size: 20px;
+    padding-left: 4px;
+    vertical-align: middle;
+  }
 }
 
 .title-box-d {
@@ -598,14 +629,6 @@ a:hover {
   background-color: #2eca6a;
   color: #ffffff;
   border-radius: 0;
-}
-
-.btn.btn-b-n:hover {
-  background-color: #26a356;
-  color: #ffffff;
-}
-
-.navbar-toggle-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -613,8 +636,9 @@ a:hover {
   padding: 20px;
 }
 
-.navbar-toggle-box i {
-  line-height: 0;
+.btn.btn-b-n:hover {
+  background-color: #26a356;
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -1083,6 +1107,13 @@ a:hover {
 @media (min-width: 992px) {
   .intro .intro-title {
     font-size: 4rem;
+  }
+}
+
+/* intro title slogan */
+@media (min-width: 992px) {
+  .intro .slogan {
+    font-size: 25px;
   }
 }
 
