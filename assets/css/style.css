@@ -2223,8 +2223,72 @@ footer .credits {
   font-size: 14px;
 }
 
-
-
 .login {
   margin-top: 90rem;
+}
+
+.column {
+  margin-top: 9rem;
+  margin-bottom: 11rem;
+}
+
+.welcome-login h1 {
+  font-weight: 900;
+}
+
+.welcome-login h4 {
+  font-weight: 300;
+}
+
+.b-login {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(221, 221, 221, 0.2) 27%,
+    rgba(203, 203, 203, 0.65) 90%
+  );
+}
+
+.btn .btn-sign-in {
+  text-decoration: none;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn.btn-sign-in {
+  background-color: #2eca6a;
+  color: #000000;
+}
+
+.btn.btn-sign-in:hover {
+  background-color: #108f41;
+  color: #ffffff;
+}
+
+.btn.btn-sign-in {
+  background-color: #2eca6a;
+  color: #ffffff;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  padding: 20px;
+}
+
+.column .welcome-login span {
+  color: #18d26e;
+}
+
+
+@media(max-width: 557px) {
+  .welcome-login h4 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .welcome-login h4 {
+    font-size: 23px;
+  }
 }

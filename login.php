@@ -34,36 +34,36 @@
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body class="b-login">
 
 
   <!-- welcoem card login -->
   <div class="container-fluid">
-  <div class="row justify-content-center mt-5">
-    <div class="col-sm-6">
-    <div class="welcome-login text-center">
-    <h4>Selamat datang silahkan login</h4>
-    </div>
-       <div class="card shadow-lg">
-        <div class="card-body">
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="column col-sm-4 col-md-4 col-lg-4">
+      <div class="welcome-login text-center pb-2">
+        <h1>Ra 1 <span>login</span></h1>
+      <h4>Selamat datang silahkan login</h4>
+      </div>
+        <div class="card shadow-lg">
+          <div class="card-body pb-0">
         <form>
-		    <div class="mb-3">
-		   <label class="form-label">Username</label>
-			<input class="form-control form-control-md" type="email" name="email" placeholder="Username Anda" />
-		    </div>
-			<div class="mb-3">
-		    <label class="form-label">Password</label>
-			<input class="form-control form-control-md" type="password" name="password" placeholder="Password Anda" />
-		</div>
-		<div>
-          </label>
-			</div>
-		<button type="submit" class="btn btn-primary">Masuk</button>
-		</form>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input class="form-control form-control-md" type="email" name="email" placeholder="Username Anda" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input class="form-control form-control-md" type="password" name="password" placeholder="Password Anda" />
+            <button type="submit" class="btn btn-sign-in rounded">Masuk</button>
         </div>
-       </div>
+      </form>
     </div>
-  </div>
+    </div>
+    </div>
+    </div>
+    </div>
   </div>
   <!-- end welcome card login -->
     <!-- Vendor JS Files -->

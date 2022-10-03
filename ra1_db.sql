@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2022 at 11:10 AM
+-- Generation Time: Oct 04, 2022 at 01:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `ra1_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) DEFAULT NULL,
+  `username` varchar(100) NOT NULL,
+  `passsword` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `passsword`) VALUES
+(NULL, 'lan', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257');
 
 -- --------------------------------------------------------
 
