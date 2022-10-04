@@ -1,3 +1,31 @@
+<?php
+session_start();
+require 'functions.php';
+if( isset($_POST["login"])) {
+  
+  //ambil data dari url
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+  $result = mysqli_query("SELECT * FROM admin WHERE username = '$username'");
+  
+  //cek username
+  if( mysqli_num_rows($result) === 1) {
+    $row = mysqli_fetch_assoc($result);
+    
+    //cek password
+    if($password == $row["password"]) {
+      $_SESSION["username"] = $row["username"];
+      header("Location: index.php);
+      exit;
+    }
+  }
+  $error = true;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,16 +75,19 @@
       <h4>Selamat datang silahkan login</h4>
       </div>
         <div class="card shadow-lg">
-          <div class="card-body pb-0">
-        <form>
+          <?php if(isset($error)) : ?>
+          <p style="color: red; font">error</p>
+          <?php endif; ?>
+          <div class="card-body pb-0 p-4">
+        <form method="post" action="">
           <div class="mb-3">
             <label class="form-label">Username</label>
-            <input class="form-control form-control-md" type="email" name="email" placeholder="Username Anda" />
+            <input class="form-control form-control-md" type="email" name="username" placeholder="Masukkan Username" required/>
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input class="form-control form-control-md" type="password" name="password" placeholder="Password Anda" />
-            <button type="submit" class="btn btn-sign-in rounded">Masuk</button>
+            <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" required/>
+            <button type="submit" class="btn btn-sign-in rounded" name="login">Masuk</button>
         </div>
       </form>
     </div>
