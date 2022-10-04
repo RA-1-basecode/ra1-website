@@ -1,21 +1,28 @@
 <?php
 session_start();
+
+if(isset($_SESSION['admin'])) {
+  header("Location: admin/");
+  exit;
+}
+
 require 'functions.php';
 if( isset($_POST["login"])) {
   
   //ambil data dari url
   $username = $_POST["username"];
   $password = $_POST["password"];
-  $result = mysqli_query("SELECT * FROM admin WHERE username = '$username'");
+  $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
   
   //cek username
   if( mysqli_num_rows($result) === 1) {
     $row = mysqli_fetch_assoc($result);
     
     //cek password
-    if($password == $row["password"]) {
-      $_SESSION["username"] = $row["username"];
-      header("Location: index.php);
+    if( $password == $row["password"]) {
+      $_SESSION["admin"] = $row["id"];
+
+      header("Location: index.php");
       exit;
     }
   }
@@ -75,19 +82,22 @@ if( isset($_POST["login"])) {
       <h4>Selamat datang silahkan login</h4>
       </div>
         <div class="card shadow-lg">
+
+        <!-- // muncul error disini ketika true -->
           <?php if(isset($error)) : ?>
-          <p style="color: red; font">error</p>
+          <p style="color: red; font">Password atau Username Anda salah!!</p>
           <?php endif; ?>
+
           <div class="card-body pb-0 p-4">
         <form method="post" action="">
           <div class="mb-3">
             <label class="form-label">Username</label>
-            <input class="form-control form-control-md" type="email" name="username" placeholder="Masukkan Username" required/>
+            <input class="form-control form-control-md" type="name" name="username" placeholder="Masukkan Username" required/>
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
             <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" required/>
-            <button type="submit" class="btn btn-sign-in rounded" name="login">Masuk</button>
+            <button type="submit" class="btn btn-sign-in rounded col-12" name="login">Masuk</button>
         </div>
       </form>
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2022 at 01:24 AM
+-- Generation Time: Oct 04, 2022 at 09:03 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -28,17 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `passsword` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `passsword`) VALUES
-(NULL, 'lan', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257');
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'lan', '123');
 
 -- --------------------------------------------------------
 
@@ -78,6 +78,12 @@ CREATE TABLE `project` (
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pj_mk`
 --
 ALTER TABLE `pj_mk`
@@ -92,6 +98,12 @@ ALTER TABLE `project`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pj_mk`

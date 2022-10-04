@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['admin'])) {
+  header("location: ../.");
+  exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +46,7 @@
       <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
           <a class="sidebar-brand" href="index.html">
-            <span class="align-middle">ADMIN</span>
+            <span class="align-middle">Admin Ra 1</span>
           </a>
 
           <ul class="sidebar-nav">
@@ -153,7 +163,7 @@
                     Chatting</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="logout">Log out</a>
                 </div>
               </li>
             </ul>
@@ -170,7 +180,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Sales</h5>
+                        <h5 class="card-title">Jumlah Mahasiswa</h5>
                       </div>
 
                       <div class="col-auto">
@@ -194,7 +204,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Sales</h5>
+                        <h5 class="card-title">Laki-Laki</h5>
                       </div>
 
                       <div class="col-auto">
@@ -218,7 +228,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Sales</h5>
+                        <h5 class="card-title">Perempuan</h5>
                       </div>
 
                       <div class="col-auto">

@@ -2273,15 +2273,14 @@ footer .credits {
   align-items: center;
   justify-content: center;
   line-height: 0;
-  padding: 20px;
+  padding: 15px;
 }
 
 .column .welcome-login span {
   color: #18d26e;
 }
 
-
-@media(max-width: 557px) {
+@media (max-width: 557px) {
   .welcome-login h4 {
     font-size: 20px;
   }
