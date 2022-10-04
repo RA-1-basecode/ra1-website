@@ -114,7 +114,7 @@ if( tambah_mhs($_POST) > 0) {
 									        <input type="text" class="form-control" placeholder="Masukkan nim" name="nim" id="nim" required>
 												  <label for="nim" class="p-2">Password</label>
 									        <input type="password" class="form-control" placeholder="Masukkan password" name="password" id="nim" required>
-                          <small style="font-style: italic;">*untuk password masukkan nim kembali</small>
+                          <small style="font-style: italic;">*untuk password masukkan nim kembali (disamakan dengan nim)</small>
 								        </div>
 								          <button type="submit" class="btn btn-success ms-4" name="tambah">Tambah</button>
 											</form>

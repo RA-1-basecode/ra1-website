@@ -38,11 +38,13 @@ $data = query("SELECT * FROM admin");
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-    <link rel="stylesheet" href="src/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
     <link href="css/app.css" rel="stylesheet" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -77,7 +79,7 @@ $data = query("SELECT * FROM admin");
                     <h3>Data Mahasiswa Kelas Ra 1</h3>
                     <a href="tambah_mhs" class="btn btn-success"><span data-feather="user-plus"></span></a>
                     <div class="table-responsive mt-3">
-                      <table class="table table-bordered" id="table_id" width="100%" cellspacing="0">
+                      <table class="table table-hover" id="example" width="100%" cellspacing="0">
                           <thead>
                             <tr>
                                 <th>No</th>
@@ -119,9 +121,13 @@ $data = query("SELECT * FROM admin");
     </div>
 
     <script src="js/app.js"></script>
-    <script src="src/jquery/jquery.min.js"></script>
-    <script src="src/jquery/jquery.easing.min.js"></script>
-    <script src="src/datatables/jquery.dataTables.min.js"></script>
-	<script src="src/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+      $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>
   </body>
 </html>
