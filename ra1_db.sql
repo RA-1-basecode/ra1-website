@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2022 at 09:03 AM
+-- Generation Time: Oct 04, 2022 at 07:29 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `nama_lengkap` varchar(100) NOT NULL,
+  `nim` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,8 +38,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'lan', '123');
+INSERT INTO `admin` (`id`, `nama_lengkap`, `nim`, `password`) VALUES
+(1, 'Ferlan Ferlani', '220767', '220767'),
+(15, 'mugi', '12345', '12345');
 
 -- --------------------------------------------------------
 
@@ -68,6 +70,7 @@ CREATE TABLE `project` (
   `ket` varchar(300) NOT NULL,
   `waktu` varchar(300) NOT NULL,
   `semester` varchar(300) NOT NULL,
+  `mk` varchar(100) NOT NULL,
   `teknologi` varchar(300) NOT NULL,
   `pertemuan` varchar(300) NOT NULL,
   `img` varchar(100) NOT NULL
@@ -103,7 +106,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pj_mk`

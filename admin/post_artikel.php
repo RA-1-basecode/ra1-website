@@ -1,16 +1,9 @@
 <?php
-
 session_start();
-require '../functions.php';
-
 if(!isset($_SESSION['admin'])) {
   header("location: ../.");
   exit;
 }
-
-$result = mysqli_query($conn, "SELECT * FROM admin");
-$cout = mysqli_num_rows($result);
-
 
 ?>
 
@@ -70,7 +63,7 @@ $cout = mysqli_num_rows($result);
             <h1 class="h3 mb-3"><strong>Dashboard</strong></h1>
 
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -84,7 +77,7 @@ $cout = mysqli_num_rows($result);
                         </div>
                       </div>
                     </div>
-                    <h1 class="mt-1 mb-3"><?= $cout?></h1>
+                    <h1 class="mt-1 mb-3">2.382</h1>
                     <div class="mb-0">
                       <span class="text-danger">
                        <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
@@ -93,7 +86,7 @@ $cout = mysqli_num_rows($result);
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -115,7 +108,29 @@ $cout = mysqli_num_rows($result);
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Diskusi</h5>
+                      </div>
+
+                      <div class="col-auto">
+                        <div class="stat text-primary">
+                          <i class="align-middle" data-feather="message-square"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-0">
+                      <span class="text-danger">
+                        <a href="diskusi"><div class="btn btn-primary btn-sm"><span data-feather="message-square"></span></div></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -140,7 +155,7 @@ $cout = mysqli_num_rows($result);
             </div>
 
             <div class="row">
-              <div class="col-md-6 col-lg-6 col-xxl-6 d-flex">
+              <div class="col-12 col-lg col-xxl d-flex">
                 <div class="card flex-fill">
                   <div class="card-header">
                     <h5 class="card-title mb-0">Project Terakhir</h5>
@@ -163,43 +178,63 @@ $cout = mysqli_num_rows($result);
                         <td><span class="badge bg-success">Done</span></td>
                         <td class="d-none d-md-table-cell">Vanessa Tucker</td>
                       </tr>
+                      <tr>
+                        <td>Project Fireball</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td><span class="badge bg-danger">Cancelled</span></td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                      </tr>
+                      <tr>
+                        <td>Project Hades</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                      </tr>
+                      <tr>
+                        <td>Project Nitro</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td>
+                          <span class="badge bg-warning">In progress</span>
+                        </td>
+                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                      </tr>
+                      <tr>
+                        <td>Project Phoenix</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                      </tr>
+                      <tr>
+                        <td>Project X</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
+                      </tr>
+                      <tr>
+                        <td>Project Romeo</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td><span class="badge bg-success">Done</span></td>
+                        <td class="d-none d-md-table-cell">Christina Mason</td>
+                      </tr>
+                      <tr>
+                        <td>Project Wombat</td>
+                        <td class="d-none d-xl-table-cell">01/01/2021</td>
+                        <td class="d-none d-xl-table-cell">31/06/2021</td>
+                        <td>
+                          <span class="badge bg-warning">In progress</span>
+                        </td>
+                        <td class="d-none d-md-table-cell">William Harris</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="col-md-6 col-md-6 col-xxl-6 d-flex order-2 order-xxl-3">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
-
-									<h5 class="card-title mb-0">Statistik Jenis Kelamin</h5>
-								</div>
-								<div class="card-body d-flex">
-									<div class="align-self-center w-100">
-										<div class="py-3">
-											<div class="chart chart-xs">
-												<canvas id="chartjs-dashboard-pie"></canvas>
-											</div>
-										</div>
-
-										<table class="table mb-0">
-											<tbody>
-												<tr>
-													<td>Laki-Laki</td>
-													<td class="text-end">23</td>
-												</tr>
-												<tr>
-													<td>Perempuan</td>
-													<td class="text-end">12</td>
-												</tr>
-											</tbody>
-                      <div class="text-center">
-                      <small>Ket: <i>Cewek Ra 1 Jamet Semuah Awokawoksjfdksfjf</i></small>
-                      </div>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
             </div>
           </div>
         </main>
@@ -302,12 +337,13 @@ $cout = mysqli_num_rows($result);
         new Chart(document.getElementById("chartjs-dashboard-pie"), {
           type: "pie",
           data: {
-            labels: ["Laki-Laki", "Perempuan"],
+            labels: ["Chrome", "Firefox", "IE"],
             datasets: [
               {
-                data: [23, 12,],
+                data: [4306, 3801, 1689],
                 backgroundColor: [
                   window.theme.primary,
+                  window.theme.warning,
                   window.theme.danger,
                 ],
                 borderWidth: 5,
@@ -322,6 +358,154 @@ $cout = mysqli_num_rows($result);
             },
             cutoutPercentage: 75,
           },
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Bar chart
+        new Chart(document.getElementById("chartjs-dashboard-bar"), {
+          type: "bar",
+          data: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                label: "This year",
+                backgroundColor: window.theme.primary,
+                borderColor: window.theme.primary,
+                hoverBackgroundColor: window.theme.primary,
+                hoverBorderColor: window.theme.primary,
+                data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+                barPercentage: 0.75,
+                categoryPercentage: 0.5,
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
+            scales: {
+              yAxes: [
+                {
+                  gridLines: {
+                    display: false,
+                  },
+                  stacked: false,
+                  ticks: {
+                    stepSize: 20,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  stacked: false,
+                  gridLines: {
+                    color: "transparent",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var markers = [
+          {
+            coords: [31.230391, 121.473701],
+            name: "Shanghai",
+          },
+          {
+            coords: [28.70406, 77.102493],
+            name: "Delhi",
+          },
+          {
+            coords: [6.524379, 3.379206],
+            name: "Lagos",
+          },
+          {
+            coords: [35.689487, 139.691711],
+            name: "Tokyo",
+          },
+          {
+            coords: [23.12911, 113.264381],
+            name: "Guangzhou",
+          },
+          {
+            coords: [40.7127837, -74.0059413],
+            name: "New York",
+          },
+          {
+            coords: [34.052235, -118.243683],
+            name: "Los Angeles",
+          },
+          {
+            coords: [41.878113, -87.629799],
+            name: "Chicago",
+          },
+          {
+            coords: [51.507351, -0.127758],
+            name: "London",
+          },
+          {
+            coords: [40.416775, -3.70379],
+            name: "Madrid ",
+          },
+        ];
+        var map = new jsVectorMap({
+          map: "world",
+          selector: "#world_map",
+          zoomButtons: true,
+          markers: markers,
+          markerStyle: {
+            initial: {
+              r: 9,
+              strokeWidth: 7,
+              stokeOpacity: 0.4,
+              fill: window.theme.primary,
+            },
+            hover: {
+              fill: window.theme.primary,
+              stroke: window.theme.primary,
+            },
+          },
+          zoomOnScroll: false,
+        });
+        window.addEventListener("resize", () => {
+          map.updateSize();
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+        var defaultDate =
+          date.getUTCFullYear() +
+          "-" +
+          (date.getUTCMonth() + 1) +
+          "-" +
+          date.getUTCDate();
+        document.getElementById("datetimepicker-dashboard").flatpickr({
+          inline: true,
+          prevArrow: '<span title="Previous month">&laquo;</span>',
+          nextArrow: '<span title="Next month">&raquo;</span>',
+          defaultDate: defaultDate,
         });
       });
     </script>

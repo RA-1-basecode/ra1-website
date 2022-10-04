@@ -10,9 +10,25 @@ require 'functions.php';
 if( isset($_POST["login"])) {
   
   //ambil data dari url
-  $username = $_POST["username"];
+  $nim = $_POST["nim"];
   $password = $_POST["password"];
-  $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+  $result = mysqli_query($conn, "SELECT * FROM admin WHERE nim = '$nim'");
+
+
+  if($nim == "") {
+    echo '<script>
+            alert("field nim tidak boleh kosong!");
+            document.location.href = "login";
+          </script>';
+          exit;
+  }
+  if($password == "") {
+    echo '<script>
+            alert("field password tidak boleh kosong!");
+            document.location.href = "login";
+          </script>';
+          exit;
+  }
   
   //cek username
   if( mysqli_num_rows($result) === 1) {
@@ -20,13 +36,17 @@ if( isset($_POST["login"])) {
     
     //cek password
     if( $password == $row["password"]) {
+
       $_SESSION["admin"] = $row["id"];
+      $_SESSION["welcome"] = $welcome;
 
       header("Location: index.php");
       exit;
     }
   }
+
   $error = true;
+  
 }
 
 ?>
@@ -85,18 +105,18 @@ if( isset($_POST["login"])) {
 
         <!-- // muncul error disini ketika true -->
           <?php if(isset($error)) : ?>
-          <p style="color: red; font">Password atau Username Anda salah!!</p>
+          <p style="color: red;">Password atau Username Anda salah!!</p>
           <?php endif; ?>
 
           <div class="card-body pb-0 p-4">
         <form method="post" action="">
           <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input class="form-control form-control-md" type="name" name="username" placeholder="Masukkan Username" required/>
+            <label class="form-label">Nim</label>
+            <input class="form-control form-control-md" type="name" name="nim" placeholder="Masukkan Nim" />
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" required/>
+            <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" />
             <button type="submit" class="btn btn-sign-in rounded col-12" name="login">Masuk</button>
         </div>
       </form>
