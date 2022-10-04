@@ -77,7 +77,7 @@ $data = query("SELECT * FROM admin");
                     <h3>Data Mahasiswa Kelas Ra 1</h3>
                     <a href="tambah_mhs" class="btn btn-success"><span data-feather="user-plus"></span></a>
                     <div class="table-responsive mt-3">
-                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <table class="table table-bordered" id="table_id" width="100%" cellspacing="0">
                           <thead>
                             <tr>
                                 <th>No</th>

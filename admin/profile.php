@@ -20,19 +20,6 @@ if($_SESSION['admin']) {
 }
 
 if(isset($_POST['save'])) {
-	// $nama_lengkap_lama = $_GET['nama_lengkap'];
-	// $result = mysqli_query($conn, "SELECT * FROM admin");
-	// $data = mysqli_fetch_assoc($result);
-	
-
-	// if($nama_lengkap_lama == "") {
-
-	// 	echo '<script>
-	// 			alert("Tidak ada perubahan!");
-	// 			document.location.href = "profile";
-	// 		  </script>';
-	// 		  exit;
-	// }
 
 	if(profile($_POST) > 0) {
 		echo '<script>
