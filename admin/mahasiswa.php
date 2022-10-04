@@ -37,9 +37,11 @@ $data = query("SELECT * FROM admin");
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
+    <!-- data tables -->
+    <link rel="stylesheet" href="datatables/bootstrap.min.css">
+    <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
+    <!-- end datatables -->
 
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
@@ -121,9 +123,9 @@ $data = query("SELECT * FROM admin");
     </div>
 
     <script src="js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="datatables/jquery-3.5.1.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="datatables/dataTables.bootstrap5.min.js"></script>
     <script>
       $(document).ready(function () {
     $('#example').DataTable();
