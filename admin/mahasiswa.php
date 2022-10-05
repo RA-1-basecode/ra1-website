@@ -78,7 +78,7 @@ $data = query("SELECT * FROM admin");
               <div class="card">
                 <div class="card-body shadow-lg">
                   <div class="label-table">
-                    <h3>Data Mahasiswa Kelas Ra 1</h3>
+                    <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
                     <a href="tambah_mhs" class="btn btn-success"><span data-feather="user-plus"></span></a>
                     <div class="table-responsive mt-3">
                       <table class="table table-hover" id="example" width="100%" cellspacing="0">
@@ -97,7 +97,7 @@ $data = query("SELECT * FROM admin");
                                                 <td><?= $i; ?></td>
                                                 <td><?= $row["nama_lengkap"]; ?></td>
                                                 <td><?= $row["nim"]; ?></td>
-                                                <td><a href="" class="btn btn-primary btn-sm"><span data-feather="edit"></span></a> <a href="hapus_mhs?id= <?= $row['id']; ?>" onclick="return confirm('Apakah yakin ingin menghapus?');" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
+                                                <td><a href="hapus_mhs?id= <?= $row['id']; ?>" onclick="return confirm('Jangan sembarangan untuk menghapus data ini harus konfirmasi terlebih dahulu, klik OK untuk menghapus klik CANCEL untuk batal');" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
                                             </tr>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>

@@ -61,6 +61,16 @@ if(isset($_POST['save'])) {
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-profile.html" />
 
+	<!-- trix editor -->
+    <link rel="stylesheet" type="text/css" href="trix-editor/trix.css">
+    <script type="text/javascript" src="trix-editor/trix.js"></script>
+
+	<style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
+
 	<title>Profile - Ra 1 Teknik Informatika</title>
 
 	<link href="css/app.css" rel="stylesheet">
@@ -99,12 +109,23 @@ if(isset($_POST['save'])) {
 									<form action="" method="post">
 											<div class="card-body">
 												<input type="hidden" name="id" value="<?= $data['id']; ?>">
+
 												<label for="username" class="p-2">Nama Lengkap</label>
 												<input type="text" class="form-control" placeholder="Input" id="nama_lengkap" name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>">
+
+												<label for="username" class="p-2">Pilih Foto</label>
+												<input type="file" class="form-control" placeholder="Input" id="nama_lengkap" name="photo" value="<?= $data['nama_lengkap']; ?>">
+
+												<div class="trix-editor">
+												<label for="body" class="p-2">Blockquote</label>
+												<input id="bio" value="<?= $data['blockquote']; ?>" type="hidden" name="blockquote">
+												<trix-editor input="bio"></trix-editor>
+												</div>
+
 												<label for="nim" class="p-2">Nim</label>
 												<input type="text" class="form-control" id="nim" value="<?= $data['nim']?>" disabled>
 											</div>
-											<button type="submit" class="btn btn-success ms-4" name="save" ><span data-feather="save" style="font-size: 60px;"></span></button>
+											<button type="submit" class="btn btn-success ms-4" name="save" ><span data-feather="save" style="font-size: 60px;"></span> Simpan</button>
 									</form>
 								</div>
 							</div>
@@ -123,7 +144,11 @@ if(isset($_POST['save'])) {
 	</div>
 
 	<script src="js/app.js"></script>
-	<script></script>
+	<script>
+      document.addEventListener('trix-file-accept', function(e) {
+      e.preventDefault();
+      })
+    </script>
 
 </body>
 

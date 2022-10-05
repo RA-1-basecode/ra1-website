@@ -1,10 +1,16 @@
 <?php
-
+require 'functions.php';
 session_start();
 if(isset($_SESSION['admin'])) {
   header("Location: login");
   exit;
 }
+
+$artikel = query("SELECT * FROM artikel");
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -364,66 +370,38 @@ if(isset($_SESSION['admin'])) {
 
           <div id="news-carousel" class="swiper">
             <div class="swiper-wrapper">
-              <div class="carousel-item-c swiper-slide">
-                <div class="card-box-b card-shadow news-box">
-                  <div class="img-box-b">
-                    <img
-                      src="assets/img/post-7.jpg"
-                      alt=""
-                      class="img-b img-fluid"
-                    />
-                  </div>
-                  <div class="card-overlay">
-                    <div class="card-header-b">
-                      <div class="card-category-b">
-                        <a href="#" class="category-b">Park</a>
-                      </div>
-                      <div class="card-title-b">
-                        <h2 class="title-2">
-                          <a href="blog-single.html"
-                            >Park is comming <br />
-                            new</a
-                          >
-                        </h2>
-                      </div>
-                      <div class="card-date">
-                        <span class="date-b">18 Sep. 2017</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End carousel item -->
 
-              <div class="carousel-item-c swiper-slide">
+              <!-- looping carausel artikel -->
+              <?php foreach($artikel as $row) : ?>
+                <div class="carousel-item-c swiper-slide">
                 <div class="card-box-b card-shadow news-box">
                   <div class="img-box-b">
                     <img
-                      src="assets/img/post-3.jpg"
+                      src="admin/img-posts/<?= $row['gambar']; ?>"
                       alt=""
-                      class="img-b img-fluid"
+                      class="img-b" height="300"
                     />
                   </div>
                   <div class="card-overlay">
                     <div class="card-header-b">
                       <div class="card-category-b">
-                        <a href="#" class="category-b">Travel</a>
+                        <a href="blog/ra1-posts?id=<?= $row['id']; ?>" class="category-b"><?= $row['kategori']; ?></a>
                       </div>
                       <div class="card-title-b">
                         <h2 class="title-2">
-                          <a href="#"
-                            >Travel is comming <br />
-                            new</a
+                          <a href="blog/ra1-posts?id=<?= $row['id'];?>"
+                            ><?= $row["judul"]; ?></a
                           >
                         </h2>
                       </div>
                       <div class="card-date">
-                        <span class="date-b">18 Sep. 2017</span>
+                        <span class="date-b"><?= $row['waktu']; ?></span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <?php endforeach;?>
               <!-- End carousel item -->
             </div>
           </div>

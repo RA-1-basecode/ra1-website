@@ -9,7 +9,6 @@ if(!isset($_SESSION['admin'])) {
 
 if(isset($_POST['tambah'])) {
 
-    $nama_lengkap = $_POST['nama_lengkap'];
     $nim = $_POST['nim'];
     $password = $_POST['password'];
 
@@ -27,10 +26,7 @@ if( tambah_mhs($_POST) > 0) {
           document.location.href = "mahasiswa";
         </script>';
 } else {
-  echo '<script>
-          alert("data gagal ditambahkan");
-          document.location.href = "mahasiswa";
-      </script>';
+  echo mysqli_error($conn);
 }
 
 
@@ -72,6 +68,15 @@ if( tambah_mhs($_POST) > 0) {
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
+    <link rel="stylesheet" type="text/css" href="trix-editor/trix.css">
+    <script type="text/javascript" src="trix-editor/trix.js"></script>
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
+
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
     <link href="css/app.css" rel="stylesheet" />
@@ -106,15 +111,27 @@ if( tambah_mhs($_POST) > 0) {
                   <div class="card-body">
                     <div class="label-tambah-mhs">
                       <h3>Tambah data mahasiswa</h3>
-                      <form action="" method="post">
+                      <form action="" method="post" enctype="multipart/form-data">
 											  <div class="card-body">
-												  <label for="nama_lengkap" class="p-2">Nama lengkap</label>
+                          
+                          <label for="nama_lengkap" class="p-2">Nama lengkap</label>
 									        <input type="text" class="form-control" placeholder="Masukkan nama lengkap" id="nama_lengkap" name="nama_lengkap" required>
+                          
 												  <label for="nim" class="p-2">Nim</label>
 									        <input type="text" class="form-control" placeholder="Masukkan nim" name="nim" id="nim" required>
+                          
 												  <label for="nim" class="p-2">Password</label>
 									        <input type="password" class="form-control" placeholder="Masukkan password" name="password" id="nim" required>
-                          <small style="font-style: italic;">*untuk password masukkan nim kembali (disamakan dengan nim)</small>
+                          <small style="font-style: italic;">*untuk password masukkan nim kembali (disamakan dengan nim)</small><br>
+
+												  <label for="foto" class="p-2">Pilih Foto</label>
+									        <input type="file" class="form-control" id="foto" name="foto">
+
+                          <div class="trix-editor">
+                          <label for="body" class="p-2">Quote</label>
+                          <input id="bio" type="hidden" name="blockquote">
+                          <trix-editor input="bio"></trix-editor>
+                          </div>
 								        </div>
 								          <button type="submit" class="btn btn-success ms-4" name="tambah">Tambah</button>
 											</form>
@@ -136,5 +153,10 @@ if( tambah_mhs($_POST) > 0) {
     </div>
 
     <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+        })
+      </script>
   </body>
 </html>
