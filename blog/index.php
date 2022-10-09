@@ -1,9 +1,10 @@
 <?php
+
+
 require '../functions.php';
-$artikel = query("SELECT * FROM artikel ORDER BY id DESC");
-
-
-
+$artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
+$project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
+$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
 
 
@@ -42,7 +43,7 @@ $artikel = query("SELECT * FROM artikel ORDER BY id DESC");
 
   <!-- ======= Header/Navbar ======= -->
   <?php
-  include '../navbar.php';
+  include '../templates/navbar.php';
   ?>><!-- End Header/Navbar -->
 
   <main id="main">
@@ -112,7 +113,7 @@ $artikel = query("SELECT * FROM artikel ORDER BY id DESC");
 
   <!-- ======= Footer ======= -->
   <?php
-  include '../footer.php';
+  include '../templates/footer.php';
   ?><!-- End  Footer -->
 
   <div id="preloader"></div>

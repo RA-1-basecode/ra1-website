@@ -112,8 +112,19 @@ if( upload_project($_POST) > 0) {
                           
 									        <input type="hidden" class="form-control"  id="matakuliah" name="author" value="<?= $data_admin['nama_lengkap']; ?>">
 
-                          <label for="matakuliah" class="p-2">Matakuliah</label>
-									        <input type="text" class="form-control" placeholder="Masukkan Matakuliah" id="matakuliah" name="matakuliah" required>
+                          <label for="matakuliah" class="p-2">Pilih Matakuliah</label>
+                            <select class="form-select" name="matakuliah">
+                              <option>-</option>
+                              <option>Algoritma&Pemerograman</option>
+                              <option>Microcontroller I</option>
+                              <option>Pemerograman Dasar</option>
+                              <option>Sistem DIgital</option>
+                              <option>Organisasi dan Arsitektur Komputer</option>
+                              <option>Pendidikan Agama</option>
+                              <option>Pendidikan Pancasila</option>
+                              <option>Bahasa Indonesia</option>
+                              <option>Bahasa Inggris</option>
+                            </select>
                           
 												  <label for="waktu" class="p-2">Waktu</label>
 									        <input type="text" class="form-control" placeholder="Hari, Tanggal, Bulan, dan Tahun" name="waktu" id="waktu" required>

@@ -1,5 +1,6 @@
 <?php
 require 'functions.php';
+
 session_start();
 if(isset($_SESSION['admin'])) {
   header("Location: login");
@@ -55,7 +56,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
     <!-- ======= Header/Navbar ======= -->
     <?php
-    include 'navbar.php';
+    include 'templates/navbar.php';
     ?>
     <!-- End Header/Navbar -->
 
@@ -169,6 +170,11 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
                 <div class="title-box title-single-box">
                   <h2 class="title-a">Project Terbaru</h2>
                 </div>
+                <div class="title-link">
+                <a href="<?= base_url('/ra1-website/projects/')?>">Lihat Semua
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
               </div>
             </div>
           </div>
@@ -189,16 +195,17 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
                     <div class="card-overlay-a-content">
                       <div class="card-header-a">
                         <h2 class="card-title-a">
-                          <a href="property-single.html"
-                            ><?= $row['subject']; ?>
+                          <a href="projects/ra1_projects?id=<?= $row['id']; ?>"
+                          ><?= $row['subject']; ?>
                           </a>
                         </h2>
+                        <p class="text-white">Author : <?= $row['author']; ?></p>
                       </div>
                       <div class="card-body-a">
                         <div class="price-box d-flex">
                           <span class="price-a"><?= $row['waktu']; ?></span>
                         </div>
-                        <a href="property-single.html" class="link-a"
+                        <a href="projects/ra1_projects?id=<?= $row['id']; ?>" class="link-a"
                           >Klik disini untuk melihat detail
                           <span class="bi bi-chevron-right"></span>
                         </a>
@@ -318,6 +325,11 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
                 <div class="title-box title-single-box">
                   <h2 class="title-a">Kabar Terbaru</h2>
                 </div>
+                <div class="title-link">
+                <a href="<?= base_url('/ra1-website/blog/')?>">Lihat Semua
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
               </div>
             </div>
           </div>
@@ -343,7 +355,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
                       </div>
                       <div class="card-title-b">
                         <h2 class="title-2">
-                          <a href="blog/ra1-posts?id=<?= $row['id'];?>"
+                          <a href="blog/ra1_posts?id=<?= $row['id'];?>"
                             ><?= $row["judul"]; ?></a
                           >
                         </h2>
@@ -373,7 +385,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
     <!-- footer -->
     <?php
-    include 'footer.php';
+    include 'templates/footer.php';
     ?>
     <!-- End  Footer -->
     

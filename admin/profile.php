@@ -101,7 +101,7 @@ if(isset($_POST['save'])) {
 										<h3>Profile</h3>
 									</div>
 									<div class="text-center">
-										<img src="foto-profile/<?= $data['photo']; ?>" alt="my profile"  height="200" style="border-radius: 20px;">
+										<img src="foto-profile/<?= $data['photo']; ?>" alt="My Photo Profile"  height="200" style="border-radius: 20px;">
 										<h4 class="mt-3" style="font-weight: bold;"><?= $data['nama_lengkap']; ?></h4>
 										<h5 class="mt-3" style="font-weight: bold;"> <?= $data['nim']; ?></h5>
 										<h5 class="mt-3" style="font-weight: bold;"> <?= $data['pj_mk']; ?></h5>

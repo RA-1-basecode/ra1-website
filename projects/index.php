@@ -1,18 +1,9 @@
 <?php
-require 'functions.php';
+require '../functions.php';
 
-$project = query("SELECT * FROM project");
-
-
-
-
-
-
-
-
-
-
-
+$artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
+$project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
+$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
 
 
@@ -31,8 +22,8 @@ $project = query("SELECT * FROM project");
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="../assets/img/favicon.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
     <link
@@ -41,26 +32,26 @@ $project = query("SELECT * FROM project");
     />
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
     <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      href="../assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      href="../assets/vendor/bootstrap-icons/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
 
     <!-- ======= Header/Navbar ======= -->
     <?php
-    include 'navbar.php';
+    include '../templates/navbar.php';
     ?>
     <!-- End Header/Navbar -->
 
@@ -105,7 +96,7 @@ $project = query("SELECT * FROM project");
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
                   <img
-                    src="admin/img-projects/<?= $row['foto_project']; ?>"
+                    src="../admin/img-projects/<?= $row['foto_project']; ?>"
                     alt=""
                     class="img-a" height="300"
                   />
@@ -114,9 +105,8 @@ $project = query("SELECT * FROM project");
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="#"
-                          >204 Mount <br />
-                          Olive Road Two</a
+                        <a href="ra1_projects?id=<?= $row['id']; ?>"
+                          ><?= $row['subject']; ?></a
                         >
                       </h2>
                     </div>
@@ -124,7 +114,7 @@ $project = query("SELECT * FROM project");
                       <div class="price-box d-flex">
                         <span class="price-a"><?= $row['waktu']; ?></span>
                       </div>
-                      <a href="property-single.html" class="link-a"
+                      <a href="ra1_projects?id=<?= $row['id']; ?>" class="link-a"
                         >Klik Disini Untuk Melihat Detail
                         <span class="bi bi-chevron-right"></span>
                       </a>
@@ -161,7 +151,7 @@ $project = query("SELECT * FROM project");
 
     <!-- ======= Footer ======= -->
     <?php
-    include 'footer.php';
+    include '../templates/footer.php';
     ?>
     <!-- End  Footer -->
 
@@ -173,11 +163,11 @@ $project = query("SELECT * FROM project");
     ></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>

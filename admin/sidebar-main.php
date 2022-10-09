@@ -30,7 +30,7 @@ if($_SESSION['admin']) {
                   <img
                     src="foto-profile/<?= $data_admin['photo']; ?>"
                     class="avatar img-fluid rounded me-1"
-                    alt="Charles Hall"
+                    alt="<?= $data_admin['nama_lengkap']; ?>"
                   />
                   </div>
                 </a>
@@ -43,7 +43,7 @@ if($_SESSION['admin']) {
                   <img
                     src="foto-profile/<?= $data_admin['photo']; ?>"
                     class="avatar img-fluid rounded me-1"
-                    alt="Charles Hall"
+                    alt="Photo Profile"
                   />
                   <span class="text-dark"><?= $data_admin['nama_lengkap']; ?></span>
                 </a>

@@ -179,7 +179,7 @@ $artikel = query("SELECT * FROM artikel");
                             <td><?= $row['semester']; ?></td>
                             <td><?= $row['subject']; ?></td>
                             <td><?= $row['pertemuan']; ?></td>
-                            <td><a href="del-projects?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin project ini akan di hapus?')"  class="btn btn-danger"><span data-feather="delete"></span></a></td>
+                            <td><a href="del-projects?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin project ini akan di hapus?')"  class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
                         </tr>
                         <?php $i ++; ?>
                         <?php endforeach; ?>
@@ -253,7 +253,8 @@ $artikel = query("SELECT * FROM artikel");
                             <td><?= $row['judul']; ?></td>
                             <td><?= $row['kategori']; ?></td>
                             <td><?= $row['waktu']; ?></td>
-                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger"><span data-feather="delete"></span></a></td>
+                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger m-1 btn-sm"><span data-feather="delete"></span></a>
+                            <a href="edit-projects?id= <?= $row['id']; ?>" class="btn btn-primary m-1 btn-sm"><span data-feather="edit"></span></a></td>
                         </tr>
                         <?php $i ++; ?>
                         <?php endforeach; ?>

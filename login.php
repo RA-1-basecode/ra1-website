@@ -10,8 +10,8 @@ require 'functions.php';
 if( isset($_POST["login"])) {
   
   //ambil data dari url
-  $nim = $_POST["nim"];
-  $password = $_POST["password"];
+  $nim = mysqli_escape_string($conn, $_POST["nim"]);
+  $password = mysqli_escape_string($conn, $_POST["password"]);
   $result = mysqli_query($conn, "SELECT * FROM admin WHERE nim = '$nim'");
 
 

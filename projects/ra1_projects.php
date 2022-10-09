@@ -2,8 +2,11 @@
 require '../functions.php';
 
 $id = $_GET['id'];
-$artikel = query("SELECT * FROM artikel WHERE id = $id")[0];
+$project = query("SELECT * FROM project WHERE id = $id")[0];
 $data = query("SELECT * FROM admin WHERE id = $id")[0];
+
+$artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
+$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
 ?>
 
@@ -15,7 +18,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?= $artikel['judul']; ?> - Ra 1 Class</title>
+  <title><?= $project['subject']; ?> - Ra 1 Class</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,7 +43,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
 
   <!-- ======= Header/Navbar ======= -->
   <?php
-  include '../navbar.php';
+  include '../templates/navbar.php';
   ?>
   <!-- End Header/Navbar -->
 
@@ -52,7 +55,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single"><?= $artikel['judul']; ?></h1>
+              <h1 class="title-single"><?= $project['subject']; ?></h1>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -65,7 +68,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
                   <small>Blog</small>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  <small><?= strtolower($artikel['judul']); ?></small>
+                  <small><?= strtolower($project['subject']); ?></small>
                 </li>
               </ol>
             </nav>
@@ -80,7 +83,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
         <div class="row">
           <div class="col-sm-12">
             <div class="news-img-box text-center">
-              <img src="../admin/img-posts/<?= $artikel['gambar']; ?>" alt="post-image" class="img-fluid">
+              <img src="../admin/img-projects/<?= $project['foto_project']; ?>" alt="post-image" class="img-fluid">
             </div>
           </div>
           <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -88,30 +91,36 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
               <ul class="list-inline text-center color-a">
                 <li class="list-inline-item mr-2">
                   <strong>Author : </strong>
-                  <span class="color-text-a"><?= $artikel['author']; ?></span>
+                  <span class="color-text-a"><?= $project['author']; ?></span>
                 </li>
                 <li class="list-inline-item mr-2">
-                  <strong>Kategori : </strong>
-                  <span class="color-text-a"><?= $artikel['kategori']; ?></span>
+                  <strong>Teknologi : </strong>
+                  <span class="color-text-a"><?= $project['teknologi']; ?></span>
                 </li>
                 <li class="list-inline-item">
                   <strong>Tanggal : </strong>
-                  <span class="color-text-a"><?= $artikel['waktu']; ?></span>
+                  <span class="color-text-a"><?= $project['waktu']; ?></span>
+                </li>
+                <li class="list-inline-item">
+                  <strong>Semester : </strong>
+                  <span class="color-text-a"><?= $project['semester']; ?></span>
+                </li>
+                <li class="list-inline-item">
+                  <strong>Pertemuan : </strong>
+                  <span class="color-text-a">Ke <?= $project['pertemuan']; ?></span>
+                </li>
+                <li class="list-inline-item">
+                  <strong>Matakuliah : </strong>
+                  <span class="color-text-a"><?= $project['matakuliah']; ?></span>
                 </li>
               </ul>
               <hr>
             </div>
+            <h4>Keterangan :</h4>
             <div class="post-content color-text-a">
               <p>
                <?= $artikel['konten']; ?>
               </p>
-              <blockquote class="blockquote">
-                <p class="mb-4"><?= $artikel['blockquote']; ?></p>
-                <footer class="blockquote-footer">
-                  <strong><?= $artikel['author']; ?></strong>
-                  <cite title="Source Title">Author</cite>
-                </footer>
-              </blockquote>
             </div>
             <div class="post-footer">
               <div class="post-share">
@@ -240,7 +249,7 @@ $data = query("SELECT * FROM admin WHERE id = $id")[0];
 
   <!-- footer -->
   <?php
-  include '../footer.php';
+  include '../templates/footer.php';
   ?>
   <!-- End  Footer -->
 
