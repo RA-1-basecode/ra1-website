@@ -12,6 +12,9 @@ $result = mysqli_query($conn, "SELECT * FROM admin");
 $cout = mysqli_num_rows($result);
 
 
+$data = query("SELECT * FROM project");
+$artikel = query("SELECT * FROM artikel");
+
 ?>
 
 
@@ -38,6 +41,9 @@ $cout = mysqli_num_rows($result);
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+    <link rel="stylesheet" href="datatables/bootstrap.min.css">
+    <link rel="stylesheet" href="datatables/dataTables.bootstrap.min.css">
 
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
@@ -109,7 +115,7 @@ $cout = mysqli_num_rows($result);
                     </div>
                     <div class="mb-0">
                       <span class="text-danger">
-                        <a href="tambah_mhs"><div class="btn btn-primary btn-sm"><span data-feather="plus"></span></div></a>
+                        <a href="add_mhs"><div class="btn btn-primary btn-sm"><span data-feather="plus"></span></div></a>
                       </span>
                     </div>
                   </div>
@@ -140,34 +146,50 @@ $cout = mysqli_num_rows($result);
             </div>
 
             <div class="row">
-              <div class="col-md-6 col-lg-6 col-xxl-6 d-flex">
+              <div class="col-md-9 col-lg-9 col-xxl-9">
                 <div class="card flex-fill">
                   <div class="card-header">
-                    <h5 class="card-title mb-0">Project Terakhir</h5>
+                    <h5 class="card-title mb-0">List Projects</h5>
                   </div>
-                  <table class="table table-hover my-0">
+                <div class="container">
+                <div class="table-responsive mt-3">
+                <table id="example" class="table table-hover" style="width:100%">
                     <thead>
-                      <tr>
-                        <th>Keterangan</th>
-                        <th class="d-none d-xl-table-cell">Waktu</th>
-                        <th class="d-none d-xl-table-cell">Semester</th>
-                        <th class="d-none d-md-table-cell">Teknologi</th>
-                        <th>Matakuliah</th>
-                      </tr>
+                        <tr>
+                            <th>No</th>
+                            <th>Author</th>
+                            <th>Matakuliah</th>
+                            <th>Waktu</th>
+                            <th>Teknologi</th>
+                            <th>Semester</th>
+                            <th>Subject</th>
+                            <th>Pertemuan</th>
+                            <th>Aksi</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Project Apollo</td>
-                        <td class="d-none d-xl-table-cell">01/01/2021</td>
-                        <td class="d-none d-xl-table-cell">31/06/2021</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                      </tr>
+                      <?php $i = 1;?>
+                       <?php foreach($data as $row) : ?>
+                        <tr>
+                            <td><?= $i; ?></td>
+                            <td><?= $row['author']; ?></td>
+                            <td><?= $row['matakuliah']; ?></td>
+                            <td><?= $row['waktu']; ?></td>
+                            <td><?= $row['teknologi']; ?></td>
+                            <td><?= $row['semester']; ?></td>
+                            <td><?= $row['subject']; ?></td>
+                            <td><?= $row['pertemuan']; ?></td>
+                            <td><a href="del-projects?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin project ini akan di hapus?')"  class="btn btn-danger"><span data-feather="delete"></span></a></td>
+                        </tr>
+                        <?php $i ++; ?>
+                        <?php endforeach; ?>
                     </tbody>
-                  </table>
+                 </table>
+                </div>
+                </div>
                 </div>
               </div>
-              <div class="col-md-6 col-md-6 col-xxl-6 d-flex order-2 order-xxl-3">
+              <div class="col-md col-md col-xxl d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
@@ -202,6 +224,47 @@ $cout = mysqli_num_rows($result);
 						</div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md">
+              <div class="card">
+                <div class="card-body">
+                <div class="container">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">List Postingan</h5>
+                  </div>
+                <div class="table-responsive mt-3">
+                <table id="example" class="table table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Author</th>
+                            <th>Judul</th>
+                            <th>Kategori</th>
+                            <th>Waktu</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php $i = 1;?>
+                       <?php foreach($artikel as $row) : ?>
+                        <tr>
+                            <td><?= $i; ?></td>
+                            <td><?= $row['author']; ?></td>
+                            <td><?= $row['judul']; ?></td>
+                            <td><?= $row['kategori']; ?></td>
+                            <td><?= $row['waktu']; ?></td>
+                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger"><span data-feather="delete"></span></a></td>
+                        </tr>
+                        <?php $i ++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                 </table>
+                </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
 
         <!-- footer -->
@@ -214,6 +277,16 @@ $cout = mysqli_num_rows($result);
     </div>
 
     <script src="js/app.js"></script>
+    <script src="datatables/jquery-3.5.1.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="datatables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+    $('#example').DataTable();
+});
+    </script>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Pie chart

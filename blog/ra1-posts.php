@@ -3,6 +3,7 @@ require '../functions.php';
 
 $id = $_GET['id'];
 $artikel = query("SELECT * FROM artikel WHERE id = $id")[0];
+$data = query("SELECT * FROM admin WHERE id = $id")[0];
 
 ?>
 
@@ -105,7 +106,7 @@ $artikel = query("SELECT * FROM artikel WHERE id = $id")[0];
                <?= $artikel['konten']; ?>
               </p>
               <blockquote class="blockquote">
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <p class="mb-4"><?= $artikel['blockquote']; ?></p>
                 <footer class="blockquote-footer">
                   <strong><?= $artikel['author']; ?></strong>
                   <cite title="Source Title">Author</cite>

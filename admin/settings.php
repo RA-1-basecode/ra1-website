@@ -116,7 +116,7 @@ if(isset($_POST['save'])) {
 												  <label for="settings" class="p-2">Konfirmasi password Baru</label>
 									        <input type="password" class="form-control" placeholder="Masukkan konfirmasi password baru" id="settings" name="konfirmasi_password_baru" required>
 								        </div>
-								          <button type="submit" class="btn btn-success ms-4" name="save"><span data-feather="save"></span></button>
+								          <button type="submit" class="btn btn-success ms-4" name="save"><span data-feather="save"></span> Simpan</button>
 											</form>
                     </div>
                   </div>

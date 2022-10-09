@@ -1,6 +1,6 @@
 <?php
 require '../functions.php';
-$artikel = query("SELECT * FROM artikel");
+$artikel = query("SELECT * FROM artikel ORDER BY id DESC");
 
 
 
@@ -21,7 +21,6 @@ $artikel = query("SELECT * FROM artikel");
   <title>Blog - Ra 1 Class</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -77,58 +76,35 @@ $artikel = query("SELECT * FROM artikel");
     <section class="news-grid grid">
       <div class="container">
         <div class="row">
-        <?php foreach($artikel as $row) :?>
-            <div class="col-md-4">
-            <div class="card-box-b card-shadow news-box">
-              <div class="img-box-b">
-                <img src="../admin/img-posts/<?= $row['gambar']; ?>" alt="image-post" class="img-b" height="400">
-              </div>
-              <div class="card-overlay">
-                <div class="card-header-b">
-                  <div class="card-category-b">
-                    <a href="ra1-posts?id=<?= $row['id']; ?>" class="category-b"><?= $row['kategori']; ?></a>
-                  </div>
-                  <div class="card-title-b">
-                    <h2 class="title-2">
-                      <a href="ra1-posts?id=<?= $row['id']; ?>"><?= $row['judul']; ?>
-                    </h2>
-                  </div>
-                  <div class="card-date">
-                    <span class="date-b"><?= $row['waktu']; ?></span>
+            <?php foreach($artikel as $row) : ?>
+              <div class="col-md-4">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="../admin/img-posts/<?= $row['gambar']; ?>" alt="" class="img-b" height="300">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="ra1-posts?id= <?= $row['id']; ?>" class="category-b"><?= $row['kategori']; ?></a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="ra1-posts?id= <?= $row['id']; ?>"><?= $row['judul']; ?>
+                          <br> new</a>
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b"><?= $row['waktu']; ?></span>
+                    </div>
+                    <div class="author">
+                    <small>Author : <?= $row['author']; ?></small>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+              <?php endforeach; ?>
           </div>
-        <?php endforeach; ?>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <nav class="pagination-a">
-              <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">
-                    <span class="bi bi-chevron-left"></span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item next">
-                  <a class="page-link" href="#">
-                    <span class="bi bi-chevron-right"></span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
       </div>
     </section><!-- End Blog Grid-->
 

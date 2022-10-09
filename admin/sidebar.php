@@ -27,6 +27,13 @@
                 <span class="align-middle">Mahasiswa</span>
               </a>
             </li>
+            
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="klp-matkul">
+                <i class="align-middle" data-feather="server"></i>
+                <span class="align-middle">Kelompok Matkul</span>
+              </a>
+            </li>
 
             <li class="sidebar-item">
               <a class="sidebar-link" href="diskusi">
@@ -38,7 +45,7 @@
             <li class="sidebar-header">AKSI</li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="tambah_mhs">
+              <a class="sidebar-link" href="add_mhs">
                 <i class="align-middle" data-feather="user-plus"></i>
                 <span class="align-middle">Mahasiswa</span>
               </a>
@@ -62,6 +69,14 @@
               <a class="sidebar-link" href="upload_project">
                 <i class="align-middle" data-feather="upload"></i>
                 <span class="align-middle">Project</span>
+              </a>
+            </li>
+
+            <li class="sidebar-header">DOWNLOAD</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" download href="">
+                <i class="align-middle" data-feather="download"></i>
+                <span class="align-middle">Download App</span>
               </a>
             </li>
 

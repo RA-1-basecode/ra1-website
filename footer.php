@@ -15,7 +15,7 @@
                   <a href="project">Project</a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">Blog</a>
+                  <a href="blog/">Blog</a>
                 </li>
                 <li class="list-inline-item">
                   <a href="kontak">Kontak</a>

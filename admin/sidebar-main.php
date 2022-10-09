@@ -1,3 +1,16 @@
+<?php
+// cetak session admin yang login
+if($_SESSION['admin']) {
+	$login = $_SESSION['admin'];
+
+	$result = mysqli_query($conn, "SELECT * FROM admin WHERE id = $login");
+	$data_admin = mysqli_fetch_assoc($result);
+}
+?>
+
+
+
+
 <nav class="navbar navbar-expand navbar-light navbar-bg">
           <a class="sidebar-toggle js-sidebar-toggle">
             <i class="hamburger align-self-center"></i>
@@ -13,7 +26,13 @@
                   href="#"
                   data-bs-toggle="dropdown"
                 >
-                  <i class="align-middle" data-feather="settings"></i>
+                  <div class="profile">
+                  <img
+                    src="foto-profile/<?= $data_admin['photo']; ?>"
+                    class="avatar img-fluid rounded me-1"
+                    alt="Charles Hall"
+                  />
+                  </div>
                 </a>
 
                 <a
@@ -22,11 +41,11 @@
                   data-bs-toggle="dropdown"
                 >
                   <img
-                    src="img/avatars/avatar.jpg"
+                    src="foto-profile/<?= $data_admin['photo']; ?>"
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  <span class="text-dark">Charles Hall</span>
+                  <span class="text-dark"><?= $data_admin['nama_lengkap']; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <a class="dropdown-item" href="profile"

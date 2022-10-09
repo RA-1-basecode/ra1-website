@@ -314,7 +314,7 @@ a:hover {
 @media (min-width: 992px) {
   .title-a {
     text-decoration: none;
-    font-size: 2.6rem;
+    font-size: 2rem;
     font-weight: 600;
   }
 }
@@ -372,7 +372,7 @@ a:hover {
 }
 
 .title-box-d .title-d {
-  font-weight: 600;
+  font-weight: 00;
   font-size: 2rem;
 }
 
@@ -920,7 +920,7 @@ a:hover {
 
 @media (max-width: 575px) {
   .box-collapse .title-box-d .title-d {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }
 
@@ -1780,7 +1780,7 @@ a:hover {
 
 .card-box-d .title-d {
   transition: 0.3s ease-in-out;
-  font-size: 2rem;
+  font-size: 1.9 rem;
   font-weight: 600;
   margin: 1rem 0;
   transform: translateY(-20px);
@@ -1796,14 +1796,14 @@ a:hover {
 
 @media (min-width: 992px) {
   .card-box-d .title-d {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 1rem 0;
   }
 }
 
 @media (min-width: 1200px) {
   .card-box-d .title-d {
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin: 1rem 0;
   }
 }

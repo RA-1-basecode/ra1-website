@@ -43,7 +43,7 @@ $data = query("SELECT * FROM admin");
     <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
     <!-- end datatables -->
 
-    <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+    <title>Mahasiswa - Ra 1 Class</title>
 
     <link href="css/app.css" rel="stylesheet" />
 
@@ -75,11 +75,11 @@ $data = query("SELECT * FROM admin");
           <div class="container-fluid p-0">
           <div class="row justify-content-center">
             <div class="col-md-10 col-sm-10 col-lg-10">
-              <div class="card">
+              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
+              <div class="card mt-3">
                 <div class="card-body shadow-lg">
                   <div class="label-table">
-                    <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
-                    <a href="tambah_mhs" class="btn btn-success"><span data-feather="user-plus"></span></a>
+                    <a href="add_mhs" class="btn btn-success"><span data-feather="user-plus"></span> Tambah</a>
                     <div class="table-responsive mt-3">
                       <table class="table table-hover" id="example" width="100%" cellspacing="0">
                           <thead>
@@ -87,6 +87,7 @@ $data = query("SELECT * FROM admin");
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
                                 <th>Nim</th>
+                                <th>Pj Matkul</th>
                                 <th>Aksi</th>
                              </tr>
                                 </thead>
@@ -97,6 +98,7 @@ $data = query("SELECT * FROM admin");
                                                 <td><?= $i; ?></td>
                                                 <td><?= $row["nama_lengkap"]; ?></td>
                                                 <td><?= $row["nim"]; ?></td>
+                                                <td><?= $row["pj_mk"]; ?></td>
                                                 <td><a href="hapus_mhs?id= <?= $row['id']; ?>" onclick="return confirm('Jangan sembarangan untuk menghapus data ini harus konfirmasi terlebih dahulu, klik OK untuk menghapus klik CANCEL untuk batal');" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
                                             </tr>
                                             <?php $i++; ?>

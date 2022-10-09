@@ -22,6 +22,19 @@ if( isset($_POST['upload'])) {
   }
 
 
+    // cetak session admin yang login
+  if($_SESSION['admin']) {
+    $login = $_SESSION['admin'];
+
+    $result = mysqli_query($conn, "SELECT * FROM admin WHERE id = $login");
+    $data_admin = mysqli_fetch_assoc($result);
+
+
+
+
+    }
+
+
 
 
 }
@@ -107,8 +120,8 @@ if( isset($_POST['upload'])) {
 											  <div class="card-body">
 
 												 <div class="author">
-                          <label for="author" class="p-2">Author</label>
-                            <input type="text" class="form-control" name="author" id="author" placeholder="Nama Anda">
+                            <input type="hidden" class="form-control" name="nama_lengkap" id="author" value="<?=$data_admin['nama_lengkap']; ?>">
+                            <input type="hidden" class="form-control" name="blockquote" id="author" value="<?=$data_admin['blockquote']; ?>">
                          </div>
                           <div class="judul">
                             <label for="judul" class="p-2">Judul</label>
@@ -118,16 +131,17 @@ if( isset($_POST['upload'])) {
 												 <div class="kategori">
                          <label for="kategori" class="p-2">Kategori</label>
                             <select class="form-select mb-3" name="kategori">
-                              <option>Pogrammming</option>
+                              <option>Programming</option>
                               <option>Edukasi</option>
+                              <option>Tutorial</option>
+                              <option>Tugas</option>
                             </select>
                          </div>
 
 												 <div class="waktu">
                          <label for="nim" class="p-2">Waktu</label>
-									        <input type="text" class="form-control" name="waktu" id="nim" placeholder="Hari, tanggal bulan tahun">
+									        <input type="text" class="form-control" name="waktu" id="nim" placeholder="Hari, tanggal, bulan, dan tahun">
                          </div>
-
 												 <div class="gambar">
                          <label for="img" class="p-2">Gambar</label>
 									        <input type="file" class="form-control" name="gambar" id="img">

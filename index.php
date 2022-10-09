@@ -6,7 +6,9 @@ if(isset($_SESSION['admin'])) {
   exit;
 }
 
-$artikel = query("SELECT * FROM artikel");
+$artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
+$project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
+$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
 
 
@@ -173,13 +175,14 @@ $artikel = query("SELECT * FROM artikel");
 
           <div id="property-carousel" class="swiper">
             <div class="swiper-wrapper">
+              <?php foreach ($project as $row) : ?>
               <div class="carousel-item-b swiper-slide">
                 <div class="card-box-a card-shadow">
                   <div class="img-box-a">
                     <img
-                      src="assets/img/property-7.jpg"
+                      src="admin/img-projects/<?= $row['foto_project']; ?>"
                       alt=""
-                      class="img-a img-fluid"
+                      class="img-a" height="300"
                     />
                   </div>
                   <div class="card-overlay">
@@ -187,13 +190,13 @@ $artikel = query("SELECT * FROM artikel");
                       <div class="card-header-a">
                         <h2 class="card-title-a">
                           <a href="property-single.html"
-                            >Mencetak Hello World
+                            ><?= $row['subject']; ?>
                           </a>
                         </h2>
                       </div>
                       <div class="card-body-a">
                         <div class="price-box d-flex">
-                          <span class="price-a">10 September 2022</span>
+                          <span class="price-a"><?= $row['waktu']; ?></span>
                         </div>
                         <a href="property-single.html" class="link-a"
                           >Klik disini untuk melihat detail
@@ -204,15 +207,15 @@ $artikel = query("SELECT * FROM artikel");
                         <ul class="card-info d-flex justify-content-around">
                           <li>
                             <h4 class="card-info-title">Pertemuan</h4>
-                            <span>01 </span>
+                            <span>0<?= $row['pertemuan']; ?></span>
                           </li>
                           <li>
                             <h4 class="card-info-title">Teknologi</h4>
-                            <span>C++</span>
+                            <span><?= $row['teknologi']; ?></span>
                           </li>
                           <li>
                             <h4 class="card-info-title">Semester</h4>
-                            <span>Ganjil (1)</span>
+                            <span><?= $row['semester']; ?></span>
                           </li>
                         </ul>
                       </div>
@@ -221,62 +224,7 @@ $artikel = query("SELECT * FROM artikel");
                 </div>
               </div>
               <!-- End carousel item -->
-              <div class="carousel-item-b swiper-slide">
-                <div class="card-box-a card-shadow">
-                  <div class="img-box-a">
-                    <img
-                      src="assets/img/property-10.jpg"
-                      alt=""
-                      class="img-a img-fluid"
-                    />
-                  </div>
-                  <div class="card-overlay">
-                    <div class="card-overlay-a-content">
-                      <div class="card-header-a">
-                        <h2 class="card-title-a">
-                          <a href="property-single.html"
-                            >RA 1 Montal <br />
-                            South Bela Two</a
-                          >
-                        </h2>
-                      </div>
-                      <div class="card-body-a">
-                        <div class="price-box d-flex">
-                          <span class="price-a">rent | $ 12.000</span>
-                        </div>
-                        <a href="property-single.html" class="link-a"
-                          >Click here to view
-                          <span class="bi bi-chevron-right"></span>
-                        </a>
-                      </div>
-                      <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                          <li>
-                            <h4 class="card-info-title">Area</h4>
-                            <span
-                              >340m
-                              <sup>2</sup>
-                            </span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Beds</h4>
-                            <span>2</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Baths</h4>
-                            <span>4</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Garages</h4>
-                            <span>1</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End carousel item -->
+              <?php endforeach; ?>
             </div>
           </div>
           <div class="propery-carousel-pagination carousel-pagination"></div>
@@ -297,47 +245,49 @@ $artikel = query("SELECT * FROM artikel");
             </div>
           </div>
           <div class="row">
-
-
           
-            <div class="col-md-3 col-sm-3 col-lg-3 p-3">
+           <div class="col-md">
+            <div class="card rounded-4">
+              <div class="card-body shadow-lg">
+              <?php foreach($pj_mk as $row) : ?>
+                <div class="col-md-3 col-sm-3 col-lg-3 p-3">
               <div class="card-box-d">
                 <div class="card-img-d">
                   <img
-                    src="assets/img/Ferlan.jpg"
+                    src="./admin/foto-profile/<?= $row['photo']; ?>"
                     alt=""
-                    class="img-d img-fluid"
+                    class="img-d img-fluid rounded-4"
                   />
                 </div>
                 <div class="card-overlay card-overlay-hover">
                   <div class="card-header-d">
                     <div class="card-title-d align-self-center">
                       <h3 class="title-d">
-                        <p class="link-two">Ferlan Ferlani</p>
+                        <p class="link-two"><?= $row['nama_lengkap']; ?></p>
                       </h3>
                     </div>
                   </div>
                   <div class="card-body-d">
                     <p class="content-d color-text-a">
                       Sebagai PJ (penanggung jawab) matakuliah
-                      Algoritma&Pemerograman.
+                      <?= $row['pj_mk']; ?>.
                     </p>
                   </div>
                   <div class="card-footer-d">
                     <div class="socials-footer d-flex justify-content-center">
                       <ul class="list-inline fs-3">
                         <li class="list-inline-item">
-                          <a href="#" class="link-one">
+                          <a href="<?= $row['link_facebook']; ?>" target="_blank" class="link-one">
                             <i class="bi bi-facebook" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li class="list-inline-item">
-                          <a href="#" class="link-one">
+                          <a href="<?= $row['link_twitter']; ?>" target="_blank" class="link-one">
                             <i class="bi bi-twitter" aria-hidden="true"></i>
                           </a>
                         </li>
                         <li class="list-inline-item">
-                          <a href="#" class="link-one">
+                          <a href="<?= $row['link_instagram']; ?>" target="_blank" class="link-one">
                             <i class="bi bi-instagram" aria-hidden="true"></i>
                           </a>
                         </li>
@@ -347,6 +297,10 @@ $artikel = query("SELECT * FROM artikel");
                 </div>
               </div>
             </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+           </div>
 
 
 
@@ -396,6 +350,9 @@ $artikel = query("SELECT * FROM artikel");
                       </div>
                       <div class="card-date">
                         <span class="date-b"><?= $row['waktu']; ?></span>
+                      </div>
+                      <div class="author">
+                        <small>Author : <?= $row['author']; ?></small>
                       </div>
                     </div>
                   </div>

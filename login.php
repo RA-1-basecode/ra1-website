@@ -105,7 +105,10 @@ if( isset($_POST["login"])) {
 
         <!-- // muncul error disini ketika true -->
           <?php if(isset($error)) : ?>
-          <p style="color: red;">Password atau Username Anda salah!!</p>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Gagal Masuk!</strong> Nim Atau Password Anda Tidak Sesuai.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
           <?php endif; ?>
 
           <div class="card-body pb-0 p-4">

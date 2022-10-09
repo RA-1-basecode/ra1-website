@@ -8,8 +8,8 @@ if(!isset($_SESSION['admin'])) {
 	exit;
 }
 
-
-
+$id = $_GET['id'];
+$mk = query("SELECT * FROM klp_mk WHERE id = $id")[0];
 
 // cetak session admin yang login
 if($_SESSION['admin']) {
@@ -68,7 +68,7 @@ if(isset($_POST['save'])) {
       }
     </style>
 
-	<title>Profile - Ra 1 Teknik Informatika</title>
+	<title>Edit Kelompok MK - Ra 1 Teknik Informatika</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -96,55 +96,41 @@ if(isset($_POST['save'])) {
 					<div class="row justify-content-center">
 						<div class="col-md-6">
 							<div class="card">
-								<div class="card-body">
-									<div class="label-profile">
-										<h3>Profile</h3>
-									</div>
-									<div class="text-center">
-										<img src="foto-profile/<?= $data['photo']; ?>" alt="my profile"  height="200" style="border-radius: 20px;">
-										<h4 class="mt-3" style="font-weight: bold;"><?= $data['nama_lengkap']; ?></h4>
-										<h5 class="mt-3" style="font-weight: bold;"> <?= $data['nim']; ?></h5>
-										<h5 class="mt-3" style="font-weight: bold;"> <?= $data['pj_mk']; ?></h5>
-										<hr>
-										<small><i><?= $data['blockquote']; ?></i></small>
-									</div>
-								</div>
-							</div>
 						</div>
-						
-						<div class="col-md-6">
+						<div class="col-md">
 							<div class="card">
 								<div class="card-body">
 								<div class="label-profile">
-										<h3>Edit Profile</h3>
-										<small><i>*untuk link media social optional</i></small>
+										<h3>Edit Kelompok Matakuliah <?= $mk['mk']; ?></h3>
+										<h4>Kelompok 1</h4>
 									</div>
-								<form action="" method="post" enctype="multipart/form-data">
+								<form action="" method="post">
 											<div class="card-body">
-												<input type="hidden" name="id" value="<?= $data['id']; ?>">
+												<input type="hidden" name="id" value="<?= $mk['id']; ?>">
+												<label for="username" class="p-2">Anggota 1</label>
+												<input type="text" class="form-control"id="nama_lengkap" name="anggota1" value="<?= $mk['satu']; ?>">
 
-												<input type="hidden" name="foto_lama" value="<?= $data['photo']; ?>">
+												<label for="instagram" class="p-2">Anggota 2</label>
+												<input type="text" class="form-control" id="instagram" name="instagram" value="<?= $mk['dua']; ?>">
 
-												<label for="foto" class="p-2">Pilih Foto</label>
-												<input type="file" class="form-control" placeholder="Input" id="foto" name="photo" value="<?= $data['nama_lengkap']; ?>">
+												<label for="facebook" class="p-2">Anggota 3</label>
+												<input type="text" class="form-control" id="facebook" name="facebook" value="">
 
-												<label for="instagram" class="p-2">Link Instagram</label>
-												<input type="text" class="form-control" placeholder="Masukkan Link Instagram" id="instagram" name="instagram" value="<?= $data['link_instagram']; ?>">
+												<label for="facebook" class="p-2">Anggota 4</label>
+												<input type="text" class="form-control" id="facebook" name="facebook" value="">
 
-												<label for="facebook" class="p-2">Link Facebook</label>
-												<input type="text" class="form-control" placeholder="Masukkan Link Facebook" id="facebook" name="facebook" value="<?= $data['link_facebook']; ?>">
+												<label for="github" class="p-2">Anggota 5</label>
+												<input type="text" class="form-control" id="github" name="github" value="">
 
-												<label for="twitter" class="p-2">Link Twitter</label>
-												<input type="text" class="form-control" placeholder="Masukkan Link Facebook" id="twitter" name="twitter" value="<?= $data['link_twitter']; ?>">
+												<label for="github" class="p-2">Anggota 6</label>
+												<input type="text" class="form-control" id="github" name="github" value="">
 
-												<label for="github" class="p-2">Link Github</label>
-												<input type="text" class="form-control" placeholder="Masukkan Link Github" id="github" name="github" value="<?= $data['link_github']; ?>">
+												<label for="github" class="p-2">Anggota 7</label>
+												<input type="text" class="form-control" id="github" name="github" value="">
+
+												<label for="github" class="p-2">Anggota 8</label>
+												<input type="text" class="form-control" id="github" name="github" value="">
 												
-												<div class="trix-editor">
-												<label for="body" class="p-2">Quote</label>
-												<input id="bio" value="<?= $data['blockquote']; ?>" type="hidden" name="blockquote">
-												<trix-editor input="bio"></trix-editor>
-												</div>
 											</div>
 											<button type="submit" class="btn btn-success ms-4" name="save" ><span data-feather="save" style="font-size: 60px;"></span> Simpan</button>
 									</form>
