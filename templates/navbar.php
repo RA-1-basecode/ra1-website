@@ -12,7 +12,7 @@ require 'config.php';
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="<?= BASE_URL?>">Kelas ra 1 <span class="color-b">TI</span></a>
+      <a class="navbar-brand text-brand" href="<?= BASE_URL?>">Class ra 1 <span class="color-b">TI</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
