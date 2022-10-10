@@ -30,6 +30,20 @@ function tambah_mhs($data) {
 	$ig = htmlspecialchars($data['ig']);
 	$tweet = htmlspecialchars($data['tweet']);
 
+	$result = mysqli_query($conn, "SELECT * FROM admin");
+	$admin = mysqli_fetch_assoc($result);
+
+
+	if($_POST['nama_lengkap'] == $admin['nama_lengkap']) {
+
+		echo '<script>
+				alert("Nama ini sudah ditambahkan!");
+				document.location.href = "add_mhs";
+			  </script>';
+
+			  return false;
+	}
+
 	$foto = upload_foto();
 
 	if( !$foto) {
@@ -351,6 +365,12 @@ function upload_project($data) {
 }
 
 
+
+
+
+
+
+
 	// upload gambar/foto profile
 	function upload_foto_project() {
 
@@ -402,22 +422,94 @@ function upload_project($data) {
 
 
 
-	// tambah pj matakuliah
-// function tambah_pj_mk($data) {
-// 	global $conn;
 
-// 	$nama_pj = htmlspecialchars($data['nama_lengkap']);
-// 	$nim_pj = htmlspecialchars($data['nim']);
-// 	$pj_matkul = htmlspecialchars($data['pj_matkul']);
+	function upload_galeri($data) {
+		global $conn;
+		$subject = $_POST['subject'];
+
+		$galeri = upload_galeri_ra1();
+
+		if(!$galeri) {
+			return false;
+		}
+
+		$query_galeri = "INSERT INTO galeri VALUES(NULL, '$galeri', '$subject')";
+
+		mysqli_query($conn, $query_galeri);
+		return mysqli_affected_rows($conn);
+
+	}
 
 
-// 	$query_pj = "INSERT INTO pj_mk VALUES(
-// 		NULL,
-// 		'$nama_pj',
-// 		'$nim_pj',
-// 		'$pj_matkul'
-// 		) ";
+	// function upload galeri
+	function upload_galeri_ra1() {
 
-// 		mysqli_query($conn, $query_pj);
-// 		return mysqli_affected_rows($conn);
-// }
+		$nama_galeri = $_FILES['galeri']['name'];
+		$size_galeri = $_FILES['galeri']['size'];
+		$tmp_galeri = $_FILES['galeri']['tmp_name'];
+
+		$ekstensi_galeri_valid = ['jpg', 'png', 'jpeg'];
+		$ekstensi_galeri = explode('.', $nama_galeri);
+		$ekstensi_galeri = strtolower(end($ekstensi_galeri));
+
+		if( !in_array($ekstensi_galeri, $ekstensi_galeri_valid)) {
+			echo '<script>
+					alert("Ekstensi file yang Anda masukkan tidak valid!");
+					document.location.href = "upload_galeri"
+				  </script>';
+				  
+			 return false;
+	}
+
+	
+	if( $size_galeri > 1000000) {
+
+		echo '<script>
+					alert("Ukuran file terlalu besar!");
+					document.location.href = "upload_galeri"
+				  </script>';
+
+		return false;
+	}
+
+
+	$nama_galeri_baru = uniqid();
+		$nama_galeri_baru .= '.';
+		$nama_galeri_baru .= $ekstensi_galeri;  
+
+		move_uploaded_file($tmp_galeri, 'galeri/' . $nama_galeri_baru);
+
+		return $nama_galeri_baru;
+
+
+
+
+	}
+
+
+
+
+
+	function kontak($data) {
+		global $conn; 
+
+		$nama =  htmlspecialchars($_GET['nama']); 
+		$hari =  htmlspecialchars($_GET['hari']); 
+		$menit =  htmlspecialchars($_GET['menit']); 
+		$email = htmlspecialchars($_GET['email']); 
+		$subject = htmlspecialchars($_GET['subject']); 
+		$message = htmlspecialchars($_GET['message']); 
+	  
+		$query_kontak = "INSERT INTO kontak VALUES(
+		  NULL,
+		  '$nama',
+		  '$subject',
+		  '$email',
+		  '$message',
+		  '$hari',
+		  '$menit'
+		)";
+
+		mysqli_query($conn, $query_kontak);
+		return mysqli_affected_rows($conn);
+	}

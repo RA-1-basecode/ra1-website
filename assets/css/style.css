@@ -347,8 +347,9 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .title-link {
-    font-size: 0.9rem;
+  .title-link,
+  .icon {
+    font-size: 0.8rem;
     font-weight: 300;
     padding-top: 1.2rem;
   }
@@ -2290,4 +2291,9 @@ footer .credits {
   .welcome-login h4 {
     font-size: 23px;
   }
+}
+
+div.dataTables_wrapper {
+  width: 800px;
+  margin: 0 auto;
 }

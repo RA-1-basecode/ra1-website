@@ -35,6 +35,27 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 </head>
@@ -62,7 +83,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#"><small>Beranda</small></a>
+                  <a href="<?= BASE_URL?>."><small>Beranda</small></a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   <small>Blog</small>
@@ -119,7 +140,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
             <h4>Keterangan :</h4>
             <div class="post-content color-text-a">
               <p>
-               <?= $artikel['konten']; ?>
+               <?= $project['konten']; ?>
               </p>
             </div>
             <div class="post-footer">
@@ -150,96 +171,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
               </div>
             </div>
           </div>
-          <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
-            <div class="title-box-d">
-              <h3 class="title-d">Comments (4)</h3>
-            </div>
-            <div class="box-comments">
-              <ul class="list-comments">
-                <li>
-                  <div class="comment-avatar">
-                    <img src="../assets/img/author-2.jpg" alt="">
-                  </div>
-                  <div class="comment-details">
-                    <h4 class="comment-author">Emma Stone</h4>
-                    <span>18 Sep 2017</span>
-                    <p class="comment-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                      ipsam temporibus maiores
-                      quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis.
-                    </p>
-                    <a href="3">Reply</a>
-                  </div>
-                </li>
-                <li class="comment-children">
-                  <div class="comment-avatar">
-                    <img src="../assets/img/author-1.jpg" alt="">
-                  </div>
-                  <div class="comment-details">
-                    <h4 class="comment-author">Oliver Colmenares</h4>
-                    <span>18 Sep 2017</span>
-                    <p class="comment-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                      ipsam temporibus maiores
-                      quae.
-                    </p>
-                    <a href="3">Reply</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="comment-avatar">
-                    <img src="../assets/img/author-2.jpg" alt="">
-                  </div>
-                  <div class="comment-details">
-                    <h4 class="comment-author">Emma Stone</h4>
-                    <span>18 Sep 2017</span>
-                    <p class="comment-description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                      ipsam temporibus maiores
-                      quae natus libero optio.
-                    </p>
-                    <a href="3">Reply</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="form-comments">
-              <div class="title-box-d">
-                <h3 class="title-d"> Leave a Reply</h3>
-              </div>
-              <form class="form-a">
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="inputName">Enter name</label>
-                      <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <label for="inputEmail1">Enter email</label>
-                      <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
-                    </div>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                    <div class="form-group">
-                      <label for="inputUrl">Enter website</label>
-                      <input type="url" class="form-control form-control-lg form-control-a" id="inputUrl" placeholder="Website">
-                    </div>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                    <div class="form-group">
-                      <label for="textMessage">Enter message</label>
-                      <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-a">Send Message</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+          <h5 style="font-style: italic; text-align : center;">Fitru komentar masih dalam tahap pengembangan...</h5>
         </div>
       </div>
     </section><!-- End Blog Single-->

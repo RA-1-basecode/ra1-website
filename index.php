@@ -9,7 +9,7 @@ if(isset($_SESSION['admin'])) {
 
 $artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
 $project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
-$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
+$admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
 
 
 
@@ -47,6 +47,27 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
       rel="stylesheet"
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -169,10 +190,10 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
               <div class="title-wrap d-flex justify-content-between">
                 <div class="title-box title-single-box">
                   <h2 class="title-a">Project Terbaru</h2>
+                  <small>Poject terbaru kelas Ra 1 Teknik Informatika</small>
                 </div>
                 <div class="title-link">
-                <a href="<?= base_url('/ra1-website/projects/')?>">Lihat Semua
-                  <span class="bi bi-chevron-right"></span>
+                <a href="<?= BASE_URL?>projects/">Lihat Semua >
                 </a>
               </div>
               </div>
@@ -246,74 +267,73 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
             <div class="col-md-12">
               <div class="title-wrap d-flex justify-content-between">
                 <div class="title-box title-single-box">
-                  <h2 class="title-a">Pj Matakuliah</h2>
+                  <h2 class="title-a">PJ Matakuliah</h2>
+                  <small>Penanggung jawab matkuliah kelas Ra 1 Teknik Informatika</small>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-          
-           <div class="col-md">
-            <div class="card rounded-4">
-              <div class="card-body shadow-lg">
-              <?php foreach($pj_mk as $row) : ?>
-                <div class="col-md-3 col-sm-3 col-lg-3 p-3">
-              <div class="card-box-d">
-                <div class="card-img-d">
-                  <img
-                    src="./admin/foto-profile/<?= $row['photo']; ?>"
-                    alt=""
-                    class="img-d img-fluid rounded-4"
-                  />
-                </div>
-                <div class="card-overlay card-overlay-hover">
-                  <div class="card-header-d">
-                    <div class="card-title-d align-self-center">
-                      <h3 class="title-d">
-                        <p class="link-two"><?= $row['nama_lengkap']; ?></p>
-                      </h3>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card rounded-4">
+                  <div class="card-body shadow-lg">
+                    <div class="row">
+                    <?php foreach($admin as $row) : ?>
+                      <div class="col-md-3 pt-3">
+                      <div class="card-box-d">
+                        <div class="card-img-d">
+                          <img src="admin/foto-profile/<?= $row['photo']; ?>" alt="" class="img-d img-fluid">
+                        </div>
+                        <div class="card-overlay card-overlay-hover">
+                          <div class="card-header-d">
+                            <div class="card-title-d align-self-center">
+                              <h3 class="title-d">
+                                <a href="#" class="link-two"><?= $row['nama_lengkap']; ?></a>
+                              </h3>
+                            </div>
+                          </div>
+                          <div class="card-body-d">
+                            <p class="content-d color-text-a">
+                              Sebagai penanggung jawab matakulliah <?= $row['pj_mk']; ?>.
+                            </p>
+                          </div>
+                          <div class="card-footer-d">
+                            <div class="socials-footer d-flex justify-content-center">
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_facebook']; ?>" class="link-one">
+                                    <i class="bi bi-facebook fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_twitter']; ?>" class="link-one">
+                                    <i class="bi bi-twitter fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_instagram']; ?>" class="link-one">
+                                    <i class="bi bi-instagram fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_github']; ?>" class="link-one">
+                                    <i class="bi bi-github fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-body-d">
-                    <p class="content-d color-text-a">
-                      Sebagai PJ (penanggung jawab) matakuliah
-                      <?= $row['pj_mk']; ?>.
-                    </p>
-                  </div>
-                  <div class="card-footer-d">
-                    <div class="socials-footer d-flex justify-content-center">
-                      <ul class="list-inline fs-3">
-                        <li class="list-inline-item">
-                          <a href="<?= $row['link_facebook']; ?>" target="_blank" class="link-one">
-                            <i class="bi bi-facebook" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="<?= $row['link_twitter']; ?>" target="_blank" class="link-one">
-                            <i class="bi bi-twitter" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="<?= $row['link_instagram']; ?>" target="_blank" class="link-one">
-                            <i class="bi bi-instagram" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                      <?php endforeach; ?>
                   </div>
                 </div>
               </div>
             </div>
-                <?php endforeach; ?>
-              </div>
             </div>
-           </div>
-
-
-
           </div>
-        </div>
-      </section>
+        </section>
       <!-- End Agents Section -->
 
       <!-- ======= Latest News Section ======= -->
@@ -324,10 +344,10 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
               <div class="title-wrap d-flex justify-content-between">
                 <div class="title-box title-single-box">
                   <h2 class="title-a">Kabar Terbaru</h2>
+                  <small>Kabar terbaru dari kelas Ra 1 Teknik Informatika</small>
                 </div>
                 <div class="title-link">
-                <a href="<?= base_url('/ra1-website/blog/')?>">Lihat Semua
-                  <span class="bi bi-chevron-right"></span>
+                <a href="<?= BASE_URL?>blog/">Lihat Semua >
                 </a>
               </div>
               </div>

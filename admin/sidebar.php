@@ -1,9 +1,9 @@
 <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-          <a class="sidebar-brand" href="#">
-            <span class="align-middle">Admin Ra 1</span>
+          <a class="sidebar-brand text-center" href="#">
+            <img src="foto-profile/6343c1b75b21e.png" height="200" alt="Ra 1 Class">
+            <span class="align-middle">Admin kelas ra 1 Teknik Informatika</span>
           </a>
-
           <ul class="sidebar-nav">
             <li class="sidebar-header">MENU</li>
 
@@ -36,7 +36,7 @@
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="diskusi">
+              <a class="sidebar-link" href="#" onclick="return confirm('Mohon maaf halaman ini belum bisa di akses,  dikarenakan masih dalam tahap pengembangan! Terimakasih by: Ferlan Ferlani')">
                 <i class="align-middle" data-feather="message-square"></i>
                 <span class="align-middle">Diskusi</span>
               </a>
@@ -67,12 +67,27 @@
 
             <li class="sidebar-item">
               <a class="sidebar-link" href="upload_project">
-                <i class="align-middle" data-feather="upload"></i>
-                <span class="align-middle">Project</span>
+                <i class="align-middle" data-feather="layers"></i>
+                <span class="align-middle">Upload Project</span>
               </a>
             </li>
 
-            <li class="sidebar-header">DOWNLOAD</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="upload_galeri">
+                <i class="align-middle" data-feather="image"></i>
+                <span class="align-middle">Upload Galeri</span>
+              </a>
+            </li>
+
+            <li class="sidebar-header">Notifikasi</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="pesan">
+                <i class="align-middle" data-feather="bell"></i>
+                <span class="align-middle">Pesan Masuk</span>
+              </a>
+            </li>
+
+            <li class="sidebar-header">APP</li>
             <li class="sidebar-item">
               <a class="sidebar-link" download href="">
                 <i class="align-middle" data-feather="download"></i>
@@ -82,7 +97,7 @@
 
             <li class="sidebar-header">REPORT</li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="bug">
+              <a class="sidebar-link" href="#" onclick="return confirm('Silahkan langsung laporkan atau hubungi developer jika ada kesalahan, error atau bug dalam aplikasi ini, Hub : 085813100467 Terimakasih.')">
                 <i class="align-middle" data-feather="file-minus"></i>
                 <span class="align-middle">Bug</span>
               </a>

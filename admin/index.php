@@ -9,7 +9,7 @@ if(!isset($_SESSION['admin'])) {
 }
 
 $result = mysqli_query($conn, "SELECT * FROM admin");
-$cout = mysqli_num_rows($result);
+$mhs = mysqli_num_rows($result);
 
 
 $data = query("SELECT * FROM project");
@@ -42,12 +42,34 @@ $artikel = query("SELECT * FROM artikel");
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-    <link rel="stylesheet" href="datatables/bootstrap.min.css">
-    <link rel="stylesheet" href="datatables/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="datatables/jquery.dataTables.min.css">
 
-    <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+    <title>Dashboard Admin -Ra 1 Teknik Informatika</title>
 
     <link href="css/app.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -90,7 +112,7 @@ $artikel = query("SELECT * FROM artikel");
                         </div>
                       </div>
                     </div>
-                    <h1 class="mt-1 mb-3"><?= $cout?></h1>
+                    <h1 class="mt-1 mb-3"><?= $mhs; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
                        <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
@@ -215,7 +237,15 @@ $artikel = query("SELECT * FROM artikel");
 												</tr>
 											</tbody>
                       <div class="text-center">
-                      <small>Ket: <i>Cewek Ra 1 Jamet Semuah Awokawoksjfdksfjf</i></small>
+                     <div class="moto">
+                      <small>Motto : Terkadang</small>
+                     </div>
+                     <div class="motivator">
+                      <small>All Motivator : Ust. Humeds</small>
+                     </div>
+                     <div class="all-radom">
+                      <small>All Random Division</small>
+                     </div>
                       </div>
 										</table>
 									</div>
@@ -253,8 +283,7 @@ $artikel = query("SELECT * FROM artikel");
                             <td><?= $row['judul']; ?></td>
                             <td><?= $row['kategori']; ?></td>
                             <td><?= $row['waktu']; ?></td>
-                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger m-1 btn-sm"><span data-feather="delete"></span></a>
-                            <a href="edit-projects?id= <?= $row['id']; ?>" class="btn btn-primary m-1 btn-sm"><span data-feather="edit"></span></a></td>
+                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger m-1 btn-sm"><span data-feather="delete"></span></a></td>
                         </tr>
                         <?php $i ++; ?>
                         <?php endforeach; ?>
@@ -280,11 +309,12 @@ $artikel = query("SELECT * FROM artikel");
     <script src="js/app.js"></script>
     <script src="datatables/jquery-3.5.1.js"></script>
     <script src="datatables/jquery.dataTables.min.js"></script>
-    <script src="datatables/dataTables.bootstrap.min.js"></script>
 
     <script>
       $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        scrollX: true,
+    });
 });
     </script>
 
@@ -297,7 +327,7 @@ $artikel = query("SELECT * FROM artikel");
             labels: ["Laki-Laki", "Perempuan"],
             datasets: [
               {
-                data: [23, 12,],
+                data: [21, 7,],
                 backgroundColor: [
                   window.theme.primary,
                   window.theme.danger,

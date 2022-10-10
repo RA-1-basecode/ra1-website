@@ -69,18 +69,31 @@ if( tambah_mhs($_POST) > 0) {
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-    <link rel="stylesheet" type="text/css" href="trix-editor/trix.css">
-    <script type="text/javascript" src="trix-editor/trix.js"></script>
-
-    <style>
-      trix-toolbar [data-trix-button-group="file-tools"] {
-        display: none;
-      }
-    </style>
-
-    <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+    <title>Add Mhs - Ra 1 Teknik Informatika</title>
 
     <link href="css/app.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -150,14 +163,11 @@ if( tambah_mhs($_POST) > 0) {
 												  <label for="foto" class="p-2">Pilih Foto</label>
 									        <input type="file" class="form-control" id="photo" name="photo">
 
-                          <div class="trix-editor mt-3">
-                         <label for="body" class="p-2">Quote</label>
-                          <input id="body" type="hidden" name="blockquote" value="Default">
-                          <trix-editor input="body"></trix-editor>
-                         </div>
+                          <label for="body" class="p-2">Quote</label>
+                         <textarea class="form-control" name="blockquote" id="editor" value="Hallo saya adalah mahasiswa Universitas Primagraha program studi teknik informatika."></textarea>
 
 								        </div>
-								          <button type="submit" class="btn btn-success ms-4" name="tambah">Tambah</button>
+								          <button type="submit" class="btn btn-success ms-4" name="tambah"><span data-feather="plus"></span> Tambah</button>
 											</form>
                     </div>
                   </div>
@@ -177,10 +187,12 @@ if( tambah_mhs($_POST) > 0) {
     </div>
 
     <script src="js/app.js"></script>
+    <script src="ckeditor/ckeditor/ckeditor.js"></script>
     <script>
-        document.addEventListener('trix-file-accept', function(e) {
-        e.preventDefault();
-        })
-      </script>
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor' );
+    </script>
+
   </body>
 </html>

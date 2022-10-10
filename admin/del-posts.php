@@ -1,6 +1,11 @@
 <?php
-
+session_start();
 require '../functions.php';
+
+if(!isset($_SESSION['admin'])) {
+  header("location: ../.");
+  exit;
+}
 $id = $_GET['id'];
 
 if( del_posts($id) > 0) {

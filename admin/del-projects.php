@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if(!isset($_SESSION['admin'])) {
+  header("location: ../.");
+  exit;
+}
 require '../functions.php';
 $id = $_GET['id'];
 

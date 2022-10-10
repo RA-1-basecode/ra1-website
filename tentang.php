@@ -1,9 +1,7 @@
 <?php
 
 require 'functions.php';
-$artikel = query("SELECT * FROM artikel ORDER BY id DESC LIMIT 5");
-$project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
-$pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
+$admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 1");
 
 ?>
 
@@ -39,6 +37,27 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
@@ -70,7 +89,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
               >
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="#">Beranda</a>
+                    <a href="<?= BASE_URL?>">Beranda</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
                     Tentang
@@ -108,7 +127,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
             <div class="col-md-12 section-t8 position-relative">
               <div class="row">
                 <div class="col-md-6 col-lg-5">
-                  <img src="assets/img/about-2.jpg" alt="" class="img-fluid" />
+                  <img src="assets/img/ket.png" alt="" class="img-fluid" />
                 </div>
                 <div class="col-lg-2 d-none d-lg-block position-relative">
                   <div class="title-vertical d-flex justify-content-start">
@@ -122,19 +141,7 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
                     </h3>
                   </div>
                   <p class="color-text-a">
-                    Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                    Vivamus magna justo, lacinia eget consectetur sed, convallis
-                    at tellus. Praesent sapien massa, convallis a pellentesque
-                    nec, egestas non nisi. Vestibulum ante ipsum primis in
-                    faucibus orci luctus et ultrices posuere cubilia Curae;
-                    Donec velit neque, auctor sit amet aliquam vel, ullamcorper
-                    sit amet ligula.
-                  </p>
-                  <p class="color-text-a">
-                    Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget
-                    consectetur sed, convallis at tellus. Mauris blandit aliquet
-                    elit, eget tincidunt nibh pulvinar a. Vivamus magna justo,
-                    lacinia eget consectetur sed, convallis at tellus.
+                   Selamat datang di website kelas Ra 1 Teknik Informatika teman teman.
                   </p>
                 </div>
               </div>
@@ -150,132 +157,61 @@ $pj_mk = query("SELECT * FROM admin ORDER BY id ASC LIMIT 9");
             <div class="col-md-12">
               <div class="title-wrap d-flex justify-content-between">
                 <div class="title-box title-single-box">
-                  <h2 class="title-a">Team Developer
+                  <h2 class="title-a">Our Developer
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3 col-6">
-              <div class="card-box-d">
-                <div class="card-img-d">
-                  <img
-                    src="assets/img/agent-5.jpg"
-                    alt=""
-                    class="img-d img-fluid"
-                  />
-                </div>
-                <div class="card-overlay card-overlay-hover">
-                  <div class="card-header-d">
-                    <div class="card-title-d align-self-center">
-                      <h3 class="title-d">
-                        <a href="agent-single.html" class="link-two"
-                          >Emma Toledo <br />
-                          Cascada</a
-                        >
-                      </h3>
+            <?php foreach($admin as $row) : ?>
+                      <div class="col-md-3 pt-3">
+                      <div class="card-box-d">
+                        <div class="card-img-d">
+                          <img src="admin/foto-profile/<?= $row['photo']; ?>" alt="" class="img-d img-fluid">
+                        </div>
+                        <div class="card-overlay card-overlay-hover">
+                          <div class="card-header-d">
+                            <div class="card-title-d align-self-center">
+                              <h3 class="title-d">
+                                <a href="#" class="link-two"><?= $row['nama_lengkap']; ?></a>
+                              </h3>
+                            </div>
+                          </div>
+                          <div class="card-body-d">
+                            <p class="content-d color-text-a">
+                              Sebagai penanggung jawab matakulliah <?= $row['pj_mk']; ?>.
+                            </p>
+                          </div>
+                          <div class="card-footer-d">
+                            <div class="socials-footer d-flex justify-content-center">
+                              <ul class="list-inline">
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_facebook']; ?>" class="link-one">
+                                    <i class="bi bi-facebook fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_twitter']; ?>" class="link-one">
+                                    <i class="bi bi-twitter fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_instagram']; ?>" class="link-one">
+                                    <i class="bi bi-instagram fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item">
+                                  <a href="<?= $row['link_github']; ?>" class="link-one">
+                                    <i class="bi bi-github fs-3" aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-body-d">
-                    <p class="content-d color-text-a">
-                      Sed porttitor lectus nibh, Cras ultricies ligula sed magna
-                      dictum porta two.
-                    </p>
-                  </div>
-                  <div class="card-footer-d">
-                    <div class="socials-footer d-flex justify-content-center">
-                      <ul class="list-inline">
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-facebook" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-twitter" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-instagram" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-linkedin" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-dribbble" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-6">
-              <div class="card-box-d">
-                <div class="card-img-d">
-                  <img
-                    src="assets/img/agent-5.jpg"
-                    alt=""
-                    class="img-d img-fluid"
-                  />
-                </div>
-                <div class="card-overlay card-overlay-hover">
-                  <div class="card-header-d">
-                    <div class="card-title-d align-self-center">
-                      <h3 class="title-d">
-                        <a href="agent-single.html" class="link-two"
-                          >Emma Toledo <br />
-                          Cascada</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="card-body-d">
-                    <p class="content-d color-text-a">
-                      Sed porttitor lectus nibh, Cras ultricies ligula sed magna
-                      dictum porta two.
-                    </p>
-                  </div>
-                  <div class="card-footer-d">
-                    <div class="socials-footer d-flex justify-content-center">
-                      <ul class="list-inline">
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-facebook" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-twitter" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-instagram" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-linkedin" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="#" class="link-one">
-                            <i class="bi bi-dribbble" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      <?php endforeach; ?>
           </div>
         </div>
       </section>

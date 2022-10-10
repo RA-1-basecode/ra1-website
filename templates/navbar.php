@@ -1,5 +1,5 @@
 <?php
-require 'config1.php';
+require 'config.php';
 ?>
 
 
@@ -12,37 +12,37 @@ require 'config1.php';
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="<?= base_url('/ra1-website/'); ?>">Ra 1<span class="color-b"> Class</span></a>
+      <a class="navbar-brand text-brand" href="<?= BASE_URL?>">Kelas ra 1 <span class="color-b">TI</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('/ra1-website/'); ?>"">Beranda</a>
+            <a class="nav-link " href="<?= BASE_URL?>">Beranda</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('/ra1-website/tentang'); ?>">Tentang</a>
+            <a class="nav-link " href="<?= BASE_URL?>tentang">Tentang</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('/ra1-website/projects/'); ?>"">Project</a>
+            <a class="nav-link " href="<?= BASE_URL ?>projects/">Project</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('/ra1-website/blog'); ?>"/">Blog</a>
+            <a class="nav-link " href="<?= BASE_URL?>blog/">Blog</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('/ra1-website/galeri'); ?>"">Galeri</a>
+            <a class="nav-link " href="<?= BASE_URL?>galeri">Galeri</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('/ra1-website/kontak'); ?>"">Kontak</a>
+            <a class="nav-link " href="<?= BASE_URL?>kontak">Kontak</a>
           </li>
         </ul>
       </div>
-     <a href="<?= base_url('/ra1-website/login')?>" class="btn btn-b-n rounded mb-4">Masuk</a>
+     <a href="<?= BASE_URL?>login" class="btn btn-b-n rounded mb-4">Masuk</a>
     </div>
   </nav><!-- End Header/Navbar -->
   

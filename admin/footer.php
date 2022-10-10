@@ -3,8 +3,8 @@
             <div class="row text-muted">
               <div class="col-6 text-start">
                 <p class="mb-0">
-                  Ra 1 Class
                   &copy;
+                  UPG Teknik Informatika Ra 1 Class 2022
                 </p>
               </div>
               <div class="col-6 text-end" style="padding-right: 40px;">
