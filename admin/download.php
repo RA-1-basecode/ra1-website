@@ -1,43 +1,12 @@
 <?php
-require '../functions.php';
+
 session_start();
+require '../functions.php';
+
 if(!isset($_SESSION['admin'])) {
   header("location: ../.");
   exit;
 }
-
-
-if( isset($_POST['upload'])) {
-
-  if( upload_artikel($_POST) > 0 ) {
-    echo '<script>
-            alert("artikel berhasil diupload!");
-            document.locaton.href = "post_artikel";
-          </script>';
-  } else {
-    echo mysqli_errno($conn);
-
-  }
-
-
-    // cetak session admin yang login
-  if($_SESSION['admin']) {
-    $login = $_SESSION['admin'];
-
-    $result = mysqli_query($conn, "SELECT * FROM admin WHERE id = $login");
-    $data_admin = mysqli_fetch_assoc($result);
-
-
-
-
-    }
-
-
-
-
-}
-
-
 
 
 
@@ -67,6 +36,15 @@ if( isset($_POST['upload'])) {
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+    
+    <!-- data tables -->
+    <link rel="stylesheet" href="datatables/bootstrap.min.css">
+    <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
+    <!-- end datatables -->
+
+    <title>Download App - Ra 1 Teknik Informatika</title>
+
+    <link href="css/app.css" rel="stylesheet" />
 
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicon/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicon/apple-touch-icon-114x114.png" />
@@ -90,16 +68,6 @@ if( isset($_POST['upload'])) {
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
 
-    <style>
-      trix-toolbar [data-trix-button-group="file-tools"] {
-        display: none;
-      }
-    </style>
-    <!-- end trix editro -->
-
-    <title>Post Artikel - Ra 1 Teknik Informatika</title>
-
-    <link href="css/app.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -123,62 +91,26 @@ if( isset($_POST['upload'])) {
         ?>
         <!-- end sidebar main -->
 
+        <!-- main -->
         <main class="content">
-          <div class="container-fluid p-0">
-            <div class="row justify-content-center">
-              <div class="col-md-8 col-lg-8 col-lg-8">
-                <div class="card shadow-lg">
-                  <div class="card-body">
-                    <div class="label-tambah-mhs">
-                      <h3>Posting Artikel</h3>
-                      <form action="" method="post" enctype="multipart/form-data">
-											  <div class="card-body">
-
-												 <div class="author">
-                            <input type="text" class="form-control" name="nama_lengkap" id="author" value="<?=$data_admin['nama_lengkap']; ?>">
-                          </div>
-                         
-                          <div class="blockquote">
-                          <input type="text" class="form-control" name="kata" id="author" value="<?=$data_admin['blockquote']; ?>">
-                          </div>
-
-                          <div class="judul">
-                            <label for="judul" class="p-2">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Konten">
-                          </div>
-
-												 <div class="kategori">
-                         <label for="kategori" class="p-2">Kategori</label>
-                            <select class="form-select mb-3" name="kategori">
-                              <option>Programming</option>
-                              <option>Edukasi</option>
-                              <option>Tutorial</option>
-                              <option>Tugas</option>
-                            </select>
-                         </div>
-
-												 <div class="waktu">
-                         <label for="nim" class="p-2">Waktu</label>
-									        <input type="text" class="form-control" name="waktu" id="nim" placeholder="Hari, tanggal, bulan, dan tahun">
-                         </div>
-												 <div class="gambar">
-                         <label for="img" class="p-2">Gambar</label>
-									        <input type="file" class="form-control" name="gambar" id="img">
-                         </div>
-
-                         <label for="body" class="p-2">Konten</label>
-                         <textarea class="form-control" name="konten" id="editor"></textarea>
-								        </div>
-								          <button type="submit" class="btn btn-success ms-4" name="upload"><span data-feather="upload"></span> Upload</button>
-											</form>
-                    </div>
-                  </div>
+          <div class="container-fluid p-0 text-center">
+          <div class="row justify-content-center">
+            <div class="col-md-5 col-sm-5 col-lg-5">
+              <h3 class="mb-3">Download App</h3>
+              <div class="card mt-3">
+                <div class="card-body shadow-lg">
+                    <a href="https://drive.google.com/file/d/1GPFwKHduBUPplR1Xp_WEnxj1T9q0gPIo/view?usp=sharing" class="btn btn-primary btn-lg"><span data-feather="cloud"></span> Menuju link Download</a>
+                </div>
+                <div class="small-label">
+                <small>jangan khawatir geng, Lo akan dibawa ke google drive untuk mengunduh aplikasi ini (Aman)</small>
                 </div>
               </div>
             </div>
           </div>
+          </div>
         </main>
-
+        
+        <!-- end main -->
         <!-- footer -->
         <?php
         include 'footer.php';
@@ -189,11 +121,13 @@ if( isset($_POST['upload'])) {
     </div>
 
     <script src="js/app.js"></script>
-    <script src="ckeditor/ckeditor/ckeditor.js"></script>
+    <script src="datatables/jquery-3.5.1.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="datatables/dataTables.bootstrap5.min.js"></script>
     <script>
-                // Replace the <textarea id="editor1"> with a CKEditor 4
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor' );
+      $(document).ready(function () {
+    $('#example').DataTable();
+});
     </script>
   </body>
 </html>

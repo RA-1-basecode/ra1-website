@@ -81,7 +81,7 @@
 
             <li class="sidebar-header">APP</li>
             <li class="sidebar-item">
-              <a class="sidebar-link" download href="">
+              <a class="sidebar-link" href="download">
                 <i class="align-middle" data-feather="download"></i>
                 <span class="align-middle">Download App</span>
               </a>

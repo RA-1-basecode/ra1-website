@@ -229,11 +229,11 @@ $artikel = query("SELECT * FROM artikel");
 											<tbody>
 												<tr>
 													<td>Laki-Laki</td>
-													<td class="text-end">23</td>
+													<td class="text-end">21</td>
 												</tr>
 												<tr>
 													<td>Perempuan</td>
-													<td class="text-end">12</td>
+													<td class="text-end">7</td>
 												</tr>
 											</tbody>
                       <div class="text-center">

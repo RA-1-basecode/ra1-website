@@ -235,8 +235,8 @@ function upload_artikel($data) {
 	$judul = htmlspecialchars($data['judul']);
 	$kategori = htmlspecialchars($data['kategori']);
 	$waktu = htmlspecialchars($data['waktu']);
-	$blockquote = $data['blockquote'];
 	$konten = $data['konten'];
+	$kata = $data['kata'];
 
 	$gambar = upload_gambar();
 
@@ -254,7 +254,7 @@ function upload_artikel($data) {
 		'$waktu',
 		'$gambar',
 		'$konten',
-		'$blockquote'
+		'$kata'
 		) ";
 
 		mysqli_query($conn, $query);
