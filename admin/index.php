@@ -126,18 +126,18 @@ $artikel = query("SELECT * FROM artikel");
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Tambah Mahasiswa</h5>
+                        <h5 class="card-title">Upload Project</h5>
                       </div>
 
                       <div class="col-auto">
                         <div class="stat text-primary">
-                          <i class="align-middle" data-feather="user-plus"></i>
+                          <i class="align-middle" data-feather="upload"></i>
                         </div>
                       </div>
                     </div>
                     <div class="mb-0">
                       <span class="text-danger">
-                        <a href="add_mhs"><div class="btn btn-primary btn-sm"><span data-feather="plus"></span></div></a>
+                        <a href="upload_project"><div class="btn btn-primary btn-sm"><span data-feather="upload"></span></div></a>
                       </span>
                     </div>
                   </div>

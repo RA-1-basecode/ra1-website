@@ -110,7 +110,6 @@ $data = query("SELECT * FROM admin");
                                 <th>Nama Lengkap</th>
                                 <th>Nim</th>
                                 <th>Pj Matkul</th>
-                                <th>Aksi</th>
                              </tr>
                                 </thead>
                                     <tbody>
@@ -121,8 +120,6 @@ $data = query("SELECT * FROM admin");
                                                 <td><?= $row["nama_lengkap"]; ?></td>
                                                 <td><?= $row["nim"]; ?></td>
                                                 <td><?= $row["pj_mk"]; ?></td>
-                                                <td><a href="hapus_mhs?id= <?= $row['id']; ?>" onclick="return confirm('Jangan sembarangan untuk menghapus data ini harus konfirmasi terlebih dahulu, klik OK untuk menghapus klik CANCEL untuk batal');" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
-                                            </tr>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>

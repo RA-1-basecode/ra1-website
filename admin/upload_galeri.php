@@ -117,17 +117,15 @@ if( upload_galeri($_POST) > 0) {
                       <h3>Tambah Galeri</h3>
                       <form action="" method="post" enctype="multipart/form-data">
 
-					 <div class="card-body">
-						<label for="subject" class="p-2">Subject</label>
-						<input type="text" class="form-control" placeholder="Masukkan subject" id="subject" required name="subject">
-                        <small style="font-style: italic;">*Silahkan masukkan subject max 100 karakter (termasuk spasi)</small>
-                    </div>
-					 <div class="card-body">
-						<label for="foto" class="p-2">Pilih Gambar</label>
-						<input type="file" class="form-control" id="photo" name="galeri">
+                      <label for="body" class="p-2">Subject</label>
+                         <textarea class="form-control" name="subject" id="editor" required></textarea>
+                         <small style="font-style: italic;">Silahkan masukkan subject max 100 karakter termasuk spasi.</small>
+                    <div class="card-body">
+                      <label for="foto" class="p-2">Pilih Gambar</label>
+                      <input type="file" class="form-control" id="photo" name="galeri">
                     </div>
                      <button type="submit" class="btn btn-success ms-4" name="tambah"><span data-feather="upload"></span> Upload</button>
-					</form>
+					      </form>
                     </div>
                   </div>
                 </div>
@@ -146,6 +144,11 @@ if( upload_galeri($_POST) > 0) {
     </div>
 
     <script src="js/app.js"></script>
-
+    <script src="ckeditor/ckeditor/ckeditor.js"></script>
+    <script>
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor' );
+    </script>
   </body>
 </html>

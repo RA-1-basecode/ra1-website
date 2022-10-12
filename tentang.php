@@ -1,7 +1,7 @@
 <?php
 
 require 'functions.php';
-$admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 1");
+$admin = query("SELECT * FROM admin ORDER BY id ASC");
 
 ?>
 
@@ -150,6 +150,82 @@ $admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 1");
         </div>
       </section>
 
+
+      <!-- =======Team Section ======= -->
+                  <section class="section-agents section-t8 intro-single">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="title-wrap d-flex justify-content-between">
+                            <div class="title-box title-single-box">
+                              <h2 class="title-a">Mahasiswa
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-12">
+                        <div class="card rounded-4">
+                          <div class="card-body shadow-lg">
+                            <div class="row">
+                            <?php foreach($admin as $row) : ?>
+                              <div class="col-md-3 pt-3">
+                              <div class="card-box-d">
+                                <div class="card-img-d">
+                                  <img src="admin/foto-profile/<?= $row['photo']; ?>" alt="" class="img-d img-fluid">
+                                </div>
+                                <div class="card-overlay card-overlay-hover">
+                                  <div class="card-header-d">
+                                    <div class="card-title-d align-self-center">
+                                      <h3 class="title-d">
+                                        <a href="#" class="link-two"><?= $row['nama_lengkap']; ?></a>
+                                      </h3>
+                                    </div>
+                                  </div>
+                                  <div class="card-body-d">
+                                    <div class="content-d color-text-a">
+                                      <?= $row['blockquote']; ?>
+                                    </div>
+                                  </div>
+                                  <div class="card-footer-d">
+                                    <div class="socials-footer d-flex justify-content-center">
+                                      <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <a href="<?= $row['link_facebook']; ?>" class="link-one">
+                                            <i class="bi bi-facebook fs-3" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <a href="<?= $row['link_twitter']; ?>" class="link-one">
+                                            <i class="bi bi-twitter fs-3" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <a href="<?= $row['link_instagram']; ?>" class="link-one">
+                                            <i class="bi bi-instagram fs-3" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <a href="<?= $row['link_github']; ?>" class="link-one">
+                                            <i class="bi bi-github fs-3" aria-hidden="true"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                              <?php endforeach; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+                </div>
+              </section>
+      <!-- End About Section-->
+
       <!-- =======Team Section ======= -->
       <section class="section-agents section-t8 intro-single">
         <div class="container">
@@ -163,45 +239,44 @@ $admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 1");
             </div>
           </div>
           <div class="row">
-            <?php foreach($admin as $row) : ?>
                       <div class="col-md-3 pt-3">
                       <div class="card-box-d">
                         <div class="card-img-d">
-                          <img src="admin/foto-profile/<?= $row['photo']; ?>" alt="" class="img-d img-fluid">
+                          <img src="admin/foto-profile/6343c0bc395a1.jpg" alt="" class="img-d img-fluid">
                         </div>
                         <div class="card-overlay card-overlay-hover">
                           <div class="card-header-d">
                             <div class="card-title-d align-self-center">
                               <h3 class="title-d">
-                                <a href="#" class="link-two"><?= $row['nama_lengkap']; ?></a>
+                                <a href="#" class="link-two">Ferlan Ferlani</a>
                               </h3>
                             </div>
                           </div>
                           <div class="card-body-d">
                             <p class="content-d color-text-a">
-                              Sebagai penanggung jawab matakulliah <?= $row['pj_mk']; ?>.
+                              Sebagai penanggung jawab matakulliah Algoritma&Pemerograman.
                             </p>
                           </div>
                           <div class="card-footer-d">
                             <div class="socials-footer d-flex justify-content-center">
                               <ul class="list-inline">
                                 <li class="list-inline-item">
-                                  <a href="<?= $row['link_facebook']; ?>" class="link-one">
+                                  <a href="https://web.facebook.com/ferlan.ferlani.id" target="_blank" class="link-one">
                                     <i class="bi bi-facebook fs-3" aria-hidden="true"></i>
                                   </a>
                                 </li>
                                 <li class="list-inline-item">
-                                  <a href="<?= $row['link_twitter']; ?>" class="link-one">
+                                  <a href="https://twitter.com/FerlanFerlani" target="_blank" class="link-one">
                                     <i class="bi bi-twitter fs-3" aria-hidden="true"></i>
                                   </a>
                                 </li>
                                 <li class="list-inline-item">
-                                  <a href="<?= $row['link_instagram']; ?>" class="link-one">
+                                  <a href="https://www.instagram.com/ferlanferlani/" target="_blank" class="link-one">
                                     <i class="bi bi-instagram fs-3" aria-hidden="true"></i>
                                   </a>
                                 </li>
                                 <li class="list-inline-item">
-                                  <a href="<?= $row['link_github']; ?>" class="link-one">
+                                  <a href="https://github.com/uniquecoded" target="_blank" class="link-one">
                                     <i class="bi bi-github fs-3" aria-hidden="true"></i>
                                   </a>
                                 </li>
@@ -211,7 +286,6 @@ $admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 1");
                         </div>
                       </div>
                     </div>
-                      <?php endforeach; ?>
           </div>
         </div>
       </section>

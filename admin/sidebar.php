@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
           <a class="sidebar-brand text-center" href="#">
-            <img src="foto-profile/6343c1b75b21e.png" height="200" alt="Ra 1 Class">
+            <img src="foto-profile/6343c1b75b21e.png" height="100" alt="Ra 1 Class"><br>
             <span class="align-middle">Admin kelas ra 1 Teknik Informatika</span>
           </a>
           <ul class="sidebar-nav">
@@ -43,14 +43,6 @@
             </li>
 
             <li class="sidebar-header">AKSI</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="add_mhs">
-                <i class="align-middle" data-feather="user-plus"></i>
-                <span class="align-middle">Mahasiswa</span>
-              </a>
-            </li>
-
             <li class="sidebar-item">
               <a class="sidebar-link" href="post_artikel">
                 <i class="align-middle" data-feather="edit-3"></i>
