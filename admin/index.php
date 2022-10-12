@@ -15,8 +15,33 @@ $mhs = mysqli_num_rows($result);
 $data = query("SELECT * FROM project");
 $artikel = query("SELECT * FROM artikel");
 
+
 ?>
 
+
+
+
+
+
+
+
+<?php if (isset($_SESSION['welcome'])) {
+  echo "<script>
+          setTimeout(function () {
+            Swal.fire ({
+              title: 'Success!',
+              text: 'Login Berhasil',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: '2500'
+          });
+        },10);
+        </script>
+        ";
+
+  unset($_SESSION['welcome']);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -309,6 +334,9 @@ $artikel = query("SELECT * FROM artikel");
     <script src="js/app.js"></script>
     <script src="datatables/jquery-3.5.1.js"></script>
     <script src="datatables/jquery.dataTables.min.js"></script>
+
+    <script src="../assets/vendor/sweetalert/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/vendor/sweetalert/js/sweetalert2.all.min.js"></script>
 
     <script>
       $(document).ready(function () {

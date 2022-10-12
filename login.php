@@ -7,47 +7,47 @@ if(isset($_SESSION['admin'])) {
 }
 
 require 'functions.php';
+
+$welcome = '';
+
 if( isset($_POST["login"])) {
   
   //ambil data dari url
   $nim = mysqli_escape_string($conn, $_POST["nim"]);
   $password = mysqli_escape_string($conn, $_POST["password"]);
   $result = mysqli_query($conn, "SELECT * FROM admin WHERE nim = '$nim'");
-
-
-  if($nim == "") {
-    echo '<script>
-            alert("field nim tidak boleh kosong!");
-            document.location.href = "login";
-          </script>';
-          exit;
-  }
-  if($password == "") {
-    echo '<script>
-            alert("field password tidak boleh kosong!");
-            document.location.href = "login";
-          </script>';
-          exit;
-  }
   
   //cek username
   if( mysqli_num_rows($result) === 1) {
+
     $row = mysqli_fetch_assoc($result);
     
     //cek password
     if( $password == $row["password"]) {
 
-      $_SESSION["admin"] = $row["id"];
-      $_SESSION["welcome"] = $welcome;
+      if($row['level'] == 'admin') {
 
-      header("Location: index.php");
-      exit;
+        $_SESSION['admin'] = $row['id'];
+        $_SESSION["welcome"] = $welcome;
+        header("Location: admin/");
+
+        exit;
+
+      }
+
+     
     }
   }
 
   $error = true;
   
 }
+
+
+
+
+
+
 
 ?>
 
@@ -125,22 +125,34 @@ if( isset($_POST["login"])) {
         <div class="card shadow-lg">
 
         <!-- // muncul error disini ketika true -->
-          <?php if(isset($error)) : ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Gagal Masuk!</strong> Nim Atau Password Anda Tidak Sesuai.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          <?php endif; ?>
+         
+
+                <!-- jika password atau username salah dan form kosong -->
+                <?php if (isset($error)) {
+                    echo "<script>
+                    setTimeout(function () {
+                      Swal.fire ({
+                        title: 'Ooops!',
+                        text: 'Password atau username Anda salah!',
+                        icon: 'warning',
+                        showConfirmButton: false,
+                        timer: '2000'
+                    });
+                  },10);
+                  </script>
+                    ";
+                  } ?>
+                  <!-- end -->
 
           <div class="card-body pb-0 p-4">
         <form method="post" action="">
           <div class="mb-3">
             <label class="form-label">Nim</label>
-            <input class="form-control form-control-md" type="name" name="nim" placeholder="Masukkan Nim" />
+            <input class="form-control form-control-md" type="name" name="nim" placeholder="Masukkan Nim" required/>
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" />
+            <input class="form-control form-control-md" type="password" name="password" placeholder="Masukkan Password" required/>
             <button type="submit" class="btn btn-sign-in rounded col-12" name="login">Masuk</button>
         </div>
       </form>
@@ -155,6 +167,9 @@ if( isset($_POST["login"])) {
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <script src="assets/vendor/sweetalert/js/sweetalert2.all.min.js"></script>
+    <script src="assets/vendor/sweetalert/js/jquery-3.6.0.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>

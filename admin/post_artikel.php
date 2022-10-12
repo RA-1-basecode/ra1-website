@@ -135,13 +135,10 @@ if( isset($_POST['upload'])) {
 											  <div class="card-body">
 
 												 <div class="author">
-                            <input type="text" class="form-control" name="nama_lengkap" id="author" value="<?=$data_admin['nama_lengkap']; ?>">
+                            <input type="hidden" class="form-control" name="nama_lengkap" id="author" value="<?=$data_admin['nama_lengkap']; ?>">
+                            <input type="hidden" class="form-control" name="kata" id="author" value="<?=$data_admin['blockquote']; ?>">
                           </div>
                          
-                          <div class="blockquote">
-                          <input type="text" class="form-control" name="kata" id="author" value="<?=$data_admin['blockquote']; ?>">
-                          </div>
-
                           <div class="judul">
                             <label for="judul" class="p-2">Judul</label>
                             <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Konten">
