@@ -117,7 +117,7 @@ $data = query("SELECT * FROM kontak");
                             <td><?= $row['email']; ?></td>
                             <td><?= $row['nama']; ?></td>
                             <td>
-                            <a href="baca_pesan?id= <?= $row['id']; ?>" class="btn btn-info btn-sm m-2"><span data-feather="eye"></span></a>
+                            <a href="baca_pesan?id= <?= $row['id']; ?>" class="btn btn-primary btn-sm m-2"><span data-feather="info"></span></a>
                         </td>
                         </tr>
                         <?php $i ++; ?>

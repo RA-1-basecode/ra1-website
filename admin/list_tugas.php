@@ -9,7 +9,7 @@ if(!isset($_SESSION['admin'])) {
 }
 
 
-$data = query("SELECT * FROM admin");
+$data = query("SELECT * FROM list_tugas ORDER BY id DESC");
 
 ?>
 
@@ -97,18 +97,22 @@ $data = query("SELECT * FROM admin");
           <div class="container-fluid p-0">
           <div class="row justify-content-center">
             <div class="col-md-10 col-sm-10 col-lg-10">
-              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
+              <h3 class="mb-3">Daftar tugas kelas Ra 1 TI</h3>
+              <div class="ket">
+                    <small style="font-style: italic;">Silahkan klik button ceklis jika tugas sudah melewati batas deadline atau tugas sudah selesai</small>
+                    </div>
               <div class="card mt-3">
                 <div class="card-body shadow-lg">
                   <div class="label-table">
+                    <a href="add_tugas" class="btn btn-success"><span data-feather="plus"></span>Tambah List Tugas</a>
                     <div class="table-responsive mt-3">
                       <table class="table table-hover" id="example" width="100%" cellspacing="0">
                           <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nim</th>
-                                <th>Pj Matkul</th>
+                                <th>Matakuliah</th>
+                                <th>Deadline</th>
+                                <th>Aksi</th>
                              </tr>
                                 </thead>
                                     <tbody>
@@ -116,9 +120,11 @@ $data = query("SELECT * FROM admin");
                                         <?php foreach ($data as $row) : ?>
                                             <tr>
                                                 <td><?= $i; ?></td>
-                                                <td><?= $row["nama_lengkap"]; ?></td>
-                                                <td><?= $row["nim"]; ?></td>
-                                                <td><?= $row["pj_mk"]; ?></td>
+                                                <td><?= $row["mk"]; ?></td>
+                                                <td><?= $row["deadline"]; ?></td>
+                                                <td><a href="hapus_tugas?id= <?= $row['id']; ?>" class="btn btn-sm btn-success mb-2"><span data-feather="check-circle" onclick="return confirm('Yakin tugas ini sudah selesai? tugas ini akan di hapus!')"></span></a>
+                                                <a href="detail_tugas?id= <?= $row['id']; ?>" class="btn btn-sm btn-primary mb-2"><span data-feather="info"></span></a> 
+                                                </td>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>

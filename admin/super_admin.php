@@ -3,17 +3,19 @@
 session_start();
 require '../functions.php';
 
-if(!isset($_SESSION['admin'])) {
+if(!isset($_SESSION['super_admin'])) {
   header("Location: ../.");
   exit;
 }
 
-$result = mysqli_query($conn, "SELECT * FROM admin");
-$mhs = mysqli_num_rows($result);
+$result1 = mysqli_query($conn, "SELECT * FROM admin");
+$mhs = mysqli_num_rows($result1);
 
+$result2 = mysqli_query($conn, "SELECT * FROM artikel");
+$artikel = mysqli_num_rows($result2);
 
-$data = query("SELECT * FROM project");
-$artikel = query("SELECT * FROM artikel");
+$result3 = mysqli_query($conn, "SELECT * FROM project");
+$project = mysqli_num_rows($result3);
 
 
 ?>
@@ -107,7 +109,7 @@ $artikel = query("SELECT * FROM artikel");
 
       <!-- sidebar -->
       <?php
-      include 'sidebar.php';
+      include 'super_admin_sidebar.php';
       ?>
       <!-- end sidebar -->
 
@@ -115,7 +117,7 @@ $artikel = query("SELECT * FROM artikel");
 
         <!-- sidebar main -->
         <?php
-        include 'sidebar-main.php';
+        include 'super_admin_sidebar_main.php';
         ?>
         <!-- end sidebar main -->
 
@@ -147,34 +149,13 @@ $artikel = query("SELECT * FROM artikel");
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col mt-0">
-                        <h5 class="card-title">Upload Project</h5>
-                      </div>
 
-                      <div class="col-auto">
-                        <div class="stat text-primary">
-                          <i class="align-middle" data-feather="upload"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mb-0">
-                      <span class="text-danger">
-                        <a href="upload_project"><div class="btn btn-primary btn-sm"><span data-feather="upload"></span></div></a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="col-md-4">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Posting Artikel</h5>
+                        <h5 class="card-title">Postingan</h5>
                       </div>
 
                       <div class="col-auto">
@@ -183,9 +164,33 @@ $artikel = query("SELECT * FROM artikel");
                         </div>
                       </div>
                     </div>
+                    <h1 class="mt-1 mb-3"><?= $artikel; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                        <a href="post_artikel"><div class="btn btn-primary btn-sm"><span data-feather="edit-3"></span></div></a>
+                       <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Projects</h5>
+                      </div>
+
+                      <div class="col-auto">
+                        <div class="stat text-primary">
+                          <i class="align-middle" data-feather="layers"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <h1 class="mt-1 mb-3"><?= $project; ?></h1>
+                    <div class="mb-0">
+                      <span class="text-danger">
+                       <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
                       </span>
                     </div>
                   </div>
@@ -194,49 +199,6 @@ $artikel = query("SELECT * FROM artikel");
             </div>
 
             <div class="row">
-              <div class="col-md-9 col-lg-9 col-xxl-9">
-                <div class="card flex-fill">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">List Projects</h5>
-                  </div>
-                <div class="container">
-                <div class="table-responsive mt-3">
-                <table id="example" class="table table-hover" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Author</th>
-                            <th>Matakuliah</th>
-                            <th>Waktu</th>
-                            <th>Teknologi</th>
-                            <th>Semester</th>
-                            <th>Subject</th>
-                            <th>Pertemuan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <?php $i = 1;?>
-                       <?php foreach($data as $row) : ?>
-                        <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $row['author']; ?></td>
-                            <td><?= $row['matakuliah']; ?></td>
-                            <td><?= $row['waktu']; ?></td>
-                            <td><?= $row['teknologi']; ?></td>
-                            <td><?= $row['semester']; ?></td>
-                            <td><?= $row['subject']; ?></td>
-                            <td><?= $row['pertemuan']; ?></td>
-                            <td><a href="del-projects?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin project ini akan di hapus?')"  class="btn btn-danger btn-sm"><span data-feather="delete"></span></a></td>
-                        </tr>
-                        <?php $i ++; ?>
-                        <?php endforeach; ?>
-                    </tbody>
-                 </table>
-                </div>
-                </div>
-                </div>
-              </div>
               <div class="col-md col-md col-xxl d-flex order-2 order-xxl-3">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
@@ -278,47 +240,6 @@ $artikel = query("SELECT * FROM artikel");
 								</div>
 							</div>
 						</div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md">
-              <div class="card">
-                <div class="card-body">
-                <div class="container">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">List Postingan</h5>
-                  </div>
-                <div class="table-responsive mt-3">
-                <table id="example" class="table table-hover" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Author</th>
-                            <th>Judul</th>
-                            <th>Kategori</th>
-                            <th>Waktu</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <?php $i = 1;?>
-                       <?php foreach($artikel as $row) : ?>
-                        <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $row['author']; ?></td>
-                            <td><?= $row['judul']; ?></td>
-                            <td><?= $row['kategori']; ?></td>
-                            <td><?= $row['waktu']; ?></td>
-                            <td><a href="del-posts?id= <?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin Postingan ini akan di hapus?')"  class="btn btn-danger m-1 btn-sm"><span data-feather="delete"></span></a></td>
-                        </tr>
-                        <?php $i ++; ?>
-                        <?php endforeach; ?>
-                    </tbody>
-                 </table>
-                </div>
-                </div>
-                </div>
-              </div>
             </div>
           </div>
         </main>

@@ -2,14 +2,18 @@
 
 session_start();
 require '../functions.php';
-
 if(!isset($_SESSION['admin'])) {
   header("location: ../.");
   exit;
 }
 
 
-$data = query("SELECT * FROM admin");
+
+$id = $_GET['id'];
+$kontak = query("SELECT * FROM list_tugas WHERE id = $id")[0];
+
+
+
 
 ?>
 
@@ -37,13 +41,8 @@ $data = query("SELECT * FROM admin");
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
-    
-    <!-- data tables -->
-    <link rel="stylesheet" href="datatables/bootstrap.min.css">
-    <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
-    <!-- end datatables -->
 
-    <title>Mahasiswa - Ra 1 Teknik Informatika</title>
+    <title>Baca Pesan - Ra 1 Teknik Informatika</title>
 
     <link href="css/app.css" rel="stylesheet" />
 
@@ -67,8 +66,7 @@ $data = query("SELECT * FROM admin");
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-
-
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -92,47 +90,39 @@ $data = query("SELECT * FROM admin");
         ?>
         <!-- end sidebar main -->
 
-        <!-- main -->
         <main class="content">
           <div class="container-fluid p-0">
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-sm-10 col-lg-10">
-              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
-              <div class="card mt-3">
-                <div class="card-body shadow-lg">
-                  <div class="label-table">
-                    <div class="table-responsive mt-3">
-                      <table class="table table-hover" id="example" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nim</th>
-                                <th>Pj Matkul</th>
-                             </tr>
-                                </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($data as $row) : ?>
-                                            <tr>
-                                                <td><?= $i; ?></td>
-                                                <td><?= $row["nama_lengkap"]; ?></td>
-                                                <td><?= $row["nim"]; ?></td>
-                                                <td><?= $row["pj_mk"]; ?></td>
-                                            <?php $i++; ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-10 col-lg-10">
+                <div class="card shadow-lg">
+                  <div class="card-body">
+                    <div class="label-tambah-mhs">
+                      <div class="judul mb-3">
+                      <h3>Detail Tugas :</h3>
+                      </div>
+                    <div class="ket">
+                        <h5 >Matakuliah : <?= $kontak['mk']; ?> </h5>
+                        <h5>Deadline : <?= $kontak['deadline']; ?></h5>
+                    </div>
+                    <div class="konten mt-5">
+                        <div class="card">
+                            <div class="card-body shadow-sm">
+                                <h6>Keterangan :</h6>
+                            <p><?= $kontak['ket']; ?></p>
                             </div>
+                        </div>
+                        <div class="back mt-3">
+                    <a href="list_tugas" class="btn btn-success"><span data-feather="arrow-left"></span> Kembali</a>
+                    </div>
+                    </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
         </main>
-        
-        <!-- end main -->
+
         <!-- footer -->
         <?php
         include 'footer.php';
@@ -143,13 +133,6 @@ $data = query("SELECT * FROM admin");
     </div>
 
     <script src="js/app.js"></script>
-    <script src="datatables/jquery-3.5.1.js"></script>
-    <script src="datatables/jquery.dataTables.min.js"></script>
-    <script src="datatables/dataTables.bootstrap5.min.js"></script>
-    <script>
-      $(document).ready(function () {
-    $('#example').DataTable();
-});
-    </script>
+
   </body>
 </html>

@@ -1,17 +1,16 @@
 <?php
-
 session_start();
 require '../functions.php';
 
-if(!isset($_SESSION['admin'])) {
-  header("location: ../.");
+if(!isset($_SESSION['super_admin'])) {
+  header("Location: ../.");
   exit;
 }
 
-
-$data = query("SELECT * FROM admin");
+$data = query("SELECT * FROM galeri");
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -80,7 +79,7 @@ $data = query("SELECT * FROM admin");
 
       <!-- sidebar -->
       <?php
-      include 'sidebar.php';
+      include 'super_admin_sidebar.php';
       ?>
       <!-- end sidebar -->
 
@@ -88,7 +87,7 @@ $data = query("SELECT * FROM admin");
 
         <!-- sidebar main -->
         <?php
-        include 'sidebar-main.php';
+        include 'super_admin_sidebar_main.php';
         ?>
         <!-- end sidebar main -->
 
@@ -97,7 +96,7 @@ $data = query("SELECT * FROM admin");
           <div class="container-fluid p-0">
           <div class="row justify-content-center">
             <div class="col-md-10 col-sm-10 col-lg-10">
-              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
+              <h3 class="mb-3">Galeri Kelas Ra 1</h3>
               <div class="card mt-3">
                 <div class="card-body shadow-lg">
                   <div class="label-table">
@@ -106,9 +105,9 @@ $data = query("SELECT * FROM admin");
                           <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nim</th>
-                                <th>Pj Matkul</th>
+                                <th>Subject</th>
+                                <th>Gambar</th>
+                                <th>Aksi</th>
                              </tr>
                                 </thead>
                                     <tbody>
@@ -116,9 +115,10 @@ $data = query("SELECT * FROM admin");
                                         <?php foreach ($data as $row) : ?>
                                             <tr>
                                                 <td><?= $i; ?></td>
-                                                <td><?= $row["nama_lengkap"]; ?></td>
-                                                <td><?= $row["nim"]; ?></td>
-                                                <td><?= $row["pj_mk"]; ?></td>
+                                                <td><?= $row["subject"]; ?></td>
+                                                <td><img src="galeri/<?= $row['galeri']; ?>" height="70"></td>
+                                                <td><a href="hapus_galeri?id=<?= $row['id']; ?>" onclick="return confirm('Apakah yakin ingin menghapus gambar ini?')" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a>
+                                                </td>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>

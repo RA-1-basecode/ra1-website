@@ -1,17 +1,16 @@
 <?php
-
 session_start();
 require '../functions.php';
 
-if(!isset($_SESSION['admin'])) {
-  header("location: ../.");
+if(!isset($_SESSION['super_admin'])) {
+  header("Location: ../.");
   exit;
 }
-
 
 $data = query("SELECT * FROM admin");
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -80,7 +79,7 @@ $data = query("SELECT * FROM admin");
 
       <!-- sidebar -->
       <?php
-      include 'sidebar.php';
+      include 'super_admin_sidebar.php';
       ?>
       <!-- end sidebar -->
 
@@ -88,7 +87,7 @@ $data = query("SELECT * FROM admin");
 
         <!-- sidebar main -->
         <?php
-        include 'sidebar-main.php';
+        include 'super_admin_sidebar_main.php';
         ?>
         <!-- end sidebar main -->
 
@@ -99,7 +98,10 @@ $data = query("SELECT * FROM admin");
             <div class="col-md-10 col-sm-10 col-lg-10">
               <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
               <div class="card mt-3">
-                <div class="card-body shadow-lg">
+                  <div class="card-body shadow-lg">
+                    <div class="label">
+                        <a href="add_mhs" class="btn btn-success"><span data-feather="user-plus"></span></a>
+                    </div>
                   <div class="label-table">
                     <div class="table-responsive mt-3">
                       <table class="table table-hover" id="example" width="100%" cellspacing="0">
@@ -109,6 +111,8 @@ $data = query("SELECT * FROM admin");
                                 <th>Nama Lengkap</th>
                                 <th>Nim</th>
                                 <th>Pj Matkul</th>
+                                <th>Password</th>
+                                <th>Aksi</th>
                              </tr>
                                 </thead>
                                     <tbody>
@@ -119,6 +123,10 @@ $data = query("SELECT * FROM admin");
                                                 <td><?= $row["nama_lengkap"]; ?></td>
                                                 <td><?= $row["nim"]; ?></td>
                                                 <td><?= $row["pj_mk"]; ?></td>
+                                                <td><?= $row["password"]; ?></td>
+                                                <td><a href="hapus_mhs?id=<?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm mb-2"><span data-feather="delete"></span></a>
+                                                    <a href="super_admin_edit_mhs?id=<?= $row['id']; ?>" class="btn btn-primary btn-sm mb-2"><span data-feather="edit"></span></a>
+                                                </td>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>

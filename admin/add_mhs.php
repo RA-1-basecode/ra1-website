@@ -2,8 +2,9 @@
 
 session_start();
 require '../functions.php';
-if(!isset($_SESSION['admin'])) {
-  header("location: ../.");
+
+if(!isset($_SESSION['super_admin'])) {
+  header("Location: ../.");
   exit;
 }
 
@@ -15,7 +16,7 @@ if(isset($_POST['tambah'])) {
     if($nim != $password) {
       echo '<script>
               alert("password dan nim tidak sesuai! ulangi lagi!");
-              document.location.href = "tambah_mhs";
+              document.location.href = "add_mhs";
            </script>';
            exit;
     }
@@ -23,7 +24,7 @@ if(isset($_POST['tambah'])) {
 if( tambah_mhs($_POST) > 0) {
   echo '<script>
           alert("data berhasil ditambahkan");
-          document.location.href = "mahasiswa";
+          document.location.href = "super_admin_mhs";
         </script>';
 } else {
   echo mysqli_error($conn);
@@ -105,7 +106,7 @@ if( tambah_mhs($_POST) > 0) {
 
       <!-- sidebar -->
       <?php
-      include 'sidebar.php';
+      include 'super_admin_sidebar.php';
       ?>
       <!-- end sidebar -->
 
@@ -113,7 +114,7 @@ if( tambah_mhs($_POST) > 0) {
 
         <!-- sidebar main -->
         <?php
-        include 'sidebar-main.php';
+        include 'super_admin_sidebar_main.php';
         ?>
         <!-- end sidebar main -->
 
@@ -128,7 +129,10 @@ if( tambah_mhs($_POST) > 0) {
                       <form action="" method="post" enctype="multipart/form-data">
 											  <div class="card-body">
                           
+									        <input type="hidden" class="form-control" name="level" value="admin">
+
 									        <input type="hidden" class="form-control" name="github">
+
 
 									        <input type="hidden" class="form-control" name="tweet">
 
@@ -161,7 +165,7 @@ if( tambah_mhs($_POST) > 0) {
                           <small style="font-style: italic;">*untuk password masukkan nim kembali (disamakan dengan nim)</small><br>
 
 												  <label for="foto" class="p-2">Pilih Foto</label>
-									        <input type="file" class="form-control" id="photo" name="photo">
+									        <input type="file" class="form-control" id="photo" name="photo" required>
 
                           <label for="body" class="p-2">Quote</label>
                          <textarea class="form-control" name="blockquote" id="editor" value="Hallo saya adalah mahasiswa Universitas Primagraha program studi teknik informatika."></textarea>

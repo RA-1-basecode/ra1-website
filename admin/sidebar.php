@@ -27,6 +27,20 @@
                 <span class="align-middle">Mahasiswa</span>
               </a>
             </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="pj_matkul">
+                <i class="align-middle" data-feather="star"></i>
+                <span class="align-middle">PJ Matkul</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="list_tugas">
+                <i class="align-middle" data-feather="list"></i>
+                <span class="align-middle">Daftar Tugas</span>
+              </a>
+            </li>
             
             <li class="sidebar-item">
               <a class="sidebar-link" href="klp-matkul">
@@ -47,13 +61,6 @@
               <a class="sidebar-link" href="post_artikel">
                 <i class="align-middle" data-feather="edit-3"></i>
                 <span class="align-middle">Posting Artikel</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="pj_matkul">
-                <i class="align-middle" data-feather="star"></i>
-                <span class="align-middle">PJ Matkul</span>
               </a>
             </li>
 

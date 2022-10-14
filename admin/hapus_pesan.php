@@ -6,21 +6,18 @@ if(!isset($_SESSION['super_admin'])) {
   header("location: ../.");
   exit;
 }
-
-
-
 $id = $_GET['id'];
 
-if( hapus_mhs($id) > 0) {
+if( hapus_pesan($id) > 0) {
 
     echo '<script>
-    alert("Data berhasil dihapus!");
-    document.location.href = "super_admin_mhs";
+    alert("Pesan berhasil dihapus!");
+    document.location.href = "super_admin_pesan";
          </script>';
 } else {
     echo '<script>
-    alert("Data gagal dihapus!");
-    document.location.href = "super_admin_mhs";
+    alert("Pesan gagal dihapus!");
+    document.location.href = "super_admin_pesan";
          </script>';
 }
 

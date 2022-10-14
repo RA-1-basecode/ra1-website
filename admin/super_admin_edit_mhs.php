@@ -1,15 +1,34 @@
 <?php
 
-session_start();
 require '../functions.php';
-
-if(!isset($_SESSION['admin'])) {
+session_start();
+if(!isset($_SESSION['super_admin'])) {
   header("location: ../.");
   exit;
 }
 
 
-$data = query("SELECT * FROM admin");
+$id = $_GET['id'];
+$data = query("SELECT * FROM admin WHERE id = $id")[0];
+
+if(isset($_POST['save'])) {
+
+  if(super_admin_edit_mhs($_POST) > 0 ) {
+    
+    echo '<script>
+             alert("Data berhasil diubah!");
+             document.location.href = "super_admin_mhs";
+          </script>';
+  } else {
+    echo '<script>
+             alert("Data gagal diubah!");
+             document.location.href = "super_admin_mhs";
+          </script>';
+  }
+}
+
+
+
 
 ?>
 
@@ -37,13 +56,8 @@ $data = query("SELECT * FROM admin");
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
-    
-    <!-- data tables -->
-    <link rel="stylesheet" href="datatables/bootstrap.min.css">
-    <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
-    <!-- end datatables -->
 
-    <title>Mahasiswa - Ra 1 Teknik Informatika</title>
+    <title>Settings - Ra 1 Teknik Informatika</title>
 
     <link href="css/app.css" rel="stylesheet" />
 
@@ -67,8 +81,7 @@ $data = query("SELECT * FROM admin");
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-
-
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -80,7 +93,7 @@ $data = query("SELECT * FROM admin");
 
       <!-- sidebar -->
       <?php
-      include 'sidebar.php';
+      include 'super_admin_sidebar.php';
       ?>
       <!-- end sidebar -->
 
@@ -88,51 +101,47 @@ $data = query("SELECT * FROM admin");
 
         <!-- sidebar main -->
         <?php
-        include 'sidebar-main.php';
+        include 'super_admin_sidebar_main.php';
         ?>
         <!-- end sidebar main -->
 
-        <!-- main -->
         <main class="content">
           <div class="container-fluid p-0">
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-sm-10 col-lg-10">
-              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
-              <div class="card mt-3">
-                <div class="card-body shadow-lg">
-                  <div class="label-table">
-                    <div class="table-responsive mt-3">
-                      <table class="table table-hover" id="example" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nim</th>
-                                <th>Pj Matkul</th>
-                             </tr>
-                                </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($data as $row) : ?>
-                                            <tr>
-                                                <td><?= $i; ?></td>
-                                                <td><?= $row["nama_lengkap"]; ?></td>
-                                                <td><?= $row["nim"]; ?></td>
-                                                <td><?= $row["pj_mk"]; ?></td>
-                                            <?php $i++; ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="card shadow-lg">
+                  <div class="card-body">
+                    <div class="label-settings">
+                    <h3>Edit data mahasiswa</h3>
+                    <form action="" method="post">
+					 <div class="card-body">
+                        <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                        
+						<label for="nama" class="p-2">Nama Lengkap</label>
+						<input type="text" class="form-control" id="nama" name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>">
+
+						<label for="nim" class="p-2">Nim</label>
+						<input type="number" class="form-control"  id="nim" name="nim" value="<?= $data['nim']; ?>">
+
+						<label for="pj" class="p-2">PJ Matakuliah</label>
+						<input type="text" class="form-control" id="nim" name="pj_matakuliah" value="<?= $data['pj_mk']; ?>">
+
+						<label for="level" class="p-2">Level</label>
+						<input type="text" class="form-control" id="level" name="level" value="<?= $data['level']; ?>">
+
+						<label for="settings" class="p-2 text-bg-success mt-3">Password</label>
+						<input type="text" class="form-control" placeholder="Masukkan password baru" id="settings" name="password" value="<?= $data['password']; ?>" >
+					</div>
+					    <button type="submit" class="btn btn-success ms-4" name="save"><span data-feather="save"></span> Simpan</button>
+					</form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
         </main>
-        
-        <!-- end main -->
+
         <!-- footer -->
         <?php
         include 'footer.php';
@@ -143,13 +152,5 @@ $data = query("SELECT * FROM admin");
     </div>
 
     <script src="js/app.js"></script>
-    <script src="datatables/jquery-3.5.1.js"></script>
-    <script src="datatables/jquery.dataTables.min.js"></script>
-    <script src="datatables/dataTables.bootstrap5.min.js"></script>
-    <script>
-      $(document).ready(function () {
-    $('#example').DataTable();
-});
-    </script>
   </body>
 </html>

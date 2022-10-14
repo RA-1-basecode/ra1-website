@@ -6,6 +6,11 @@ if(isset($_SESSION['admin'])) {
   exit;
 }
 
+if(isset($_SESSION['super_admin'])) {
+  header("Location: admin/super_admin");
+  exit;
+}
+
 require 'functions.php';
 
 $welcome = '';
@@ -30,9 +35,14 @@ if( isset($_POST["login"])) {
         $_SESSION['admin'] = $row['id'];
         $_SESSION["welcome"] = $welcome;
         header("Location: admin/");
-
         exit;
 
+      } else if($row['level'] == 'super_admin') {
+        
+        $_SESSION['super_admin'] = $row['id'];
+        $_SESSION["welcome"] = $welcome;
+        header("Location: admin/super_admin");
+        exit;
       }
 
      

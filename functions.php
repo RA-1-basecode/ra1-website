@@ -27,6 +27,7 @@ function tambah_mhs($data) {
 	$pj_matkul = htmlspecialchars($data['pj_matkul']);
 	$github = htmlspecialchars($data['github']);
 	$fb = htmlspecialchars($data['fb']);
+	$level = htmlspecialchars($data['level']);
 	$ig = htmlspecialchars($data['ig']);
 	$tweet = htmlspecialchars($data['tweet']);
 
@@ -61,7 +62,8 @@ function tambah_mhs($data) {
 		'$github',
 		'$fb',
 		'$ig',
-		'$tweet'
+		'$tweet',
+		'$level'
 		) ";
 
 		mysqli_query($conn, $query1);
@@ -138,6 +140,31 @@ function hapus_mhs($id) {
 	global $conn;
 
 	mysqli_query($conn, "DELETE FROM admin WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+function hapus_posts($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+
+
+
+function hapus_projects($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+
+
+
+function hapus_tugas($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM list_tugas WHERE id = $id ");
 	return mysqli_affected_rows($conn);
 }
 
@@ -511,5 +538,68 @@ function upload_project($data) {
 		)";
 
 		mysqli_query($conn, $query_kontak);
+		return mysqli_affected_rows($conn);
+	}
+
+
+
+
+	// tambah list tugas
+	function tambah_tugas($data) {
+		global $conn; 
+
+		$mk = htmlspecialchars($_POST['mk']);
+		$deadline = htmlspecialchars($_POST['deadline']);
+		$ket =$_POST['ket'];
+
+		$query_tugas = "INSERT INTO list_tugas VALUES(
+			NULL,
+			'$mk',
+			'$deadline',
+			'$ket'
+		)";
+
+		mysqli_query($conn, $query_tugas);
+		return mysqli_affected_rows($conn);
+	}
+
+
+
+	// super admin edit mhs
+	function super_admin_edit_mhs($data) {
+		global $conn;
+		$id = $data["id"];
+		$nama_lengkap = htmlspecialchars($data["nama_lengkap"]);
+		$nim = htmlspecialchars($data["nim"]);
+		$pj_matakuliah = htmlspecialchars($data["pj_matakuliah"]);
+		$password = htmlspecialchars($data["password"]);
+		$level = htmlspecialchars($data["level"]);
+	  
+		$query ="UPDATE admin SET 
+		nama_lengkap = '$nama_lengkap',
+		nim = '$nim',
+		pj_mk = '$pj_matakuliah',
+		password = '$password',
+		level = '$level'
+		WHERE id = $id
+		";
+
+		mysqli_query($conn,$query);
+		return mysqli_affected_rows($conn);
+	  }
+	}
+
+
+	function hapus_galeri($id) {
+		global $conn;
+	
+		mysqli_query($conn, "DELETE FROM galeri WHERE id = $id ");
+		return mysqli_affected_rows($conn);
+	}
+
+	function hapus_pesan($id) {
+		global $conn;
+	
+		mysqli_query($conn, "DELETE FROM kontak WHERE id = $id ");
 		return mysqli_affected_rows($conn);
 	}

@@ -2,14 +2,37 @@
 
 session_start();
 require '../functions.php';
-
 if(!isset($_SESSION['admin'])) {
   header("location: ../.");
   exit;
 }
 
+if(isset($_POST['tambah'])) {
 
-$data = query("SELECT * FROM admin");
+if( tambah_tugas($_POST) > 0) {
+  echo '<script>
+          alert("Berhasil dimasukkan ke daftar list tugas!");
+          document.location.href = "list_tugas";
+        </script>';
+} else {
+    '<script>
+    alert("Gagal dimasukkan ke daftar list tugas!");
+    document.location.href = "list_tugas";
+  </script>';
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
 
 ?>
 
@@ -37,13 +60,8 @@ $data = query("SELECT * FROM admin");
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
-    
-    <!-- data tables -->
-    <link rel="stylesheet" href="datatables/bootstrap.min.css">
-    <link rel="stylesheet" href="datatables/dataTables.bootstrap5.min.css">
-    <!-- end datatables -->
 
-    <title>Mahasiswa - Ra 1 Teknik Informatika</title>
+    <title>Add Mhs - Ra 1 Teknik Informatika</title>
 
     <link href="css/app.css" rel="stylesheet" />
 
@@ -67,8 +85,7 @@ $data = query("SELECT * FROM admin");
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-
-
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -92,47 +109,44 @@ $data = query("SELECT * FROM admin");
         ?>
         <!-- end sidebar main -->
 
-        <!-- main -->
         <main class="content">
           <div class="container-fluid p-0">
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-sm-10 col-lg-10">
-              <h3 class="mb-3">Data Mahasiswa Kelas Ra 1</h3>
-              <div class="card mt-3">
-                <div class="card-body shadow-lg">
-                  <div class="label-table">
-                    <div class="table-responsive mt-3">
-                      <table class="table table-hover" id="example" width="100%" cellspacing="0">
-                          <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nim</th>
-                                <th>Pj Matkul</th>
-                             </tr>
-                                </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($data as $row) : ?>
-                                            <tr>
-                                                <td><?= $i; ?></td>
-                                                <td><?= $row["nama_lengkap"]; ?></td>
-                                                <td><?= $row["nim"]; ?></td>
-                                                <td><?= $row["pj_mk"]; ?></td>
-                                            <?php $i++; ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-lg-8 col-lg-8">
+                <div class="card shadow-lg">
+                  <div class="card-body">
+                    <div class="label-tambah-mhs">
+                      <h3>Masukkan list tugas</h3>
+                      <form action="" method="post">
+				        <div class="card-body">
+                         <label for="pj_matkul" class="p-2">Matakuliah</label>
+                            <select class="form-select" name="mk">
+                              <option>Algoritma&Pemerograman</option>
+                              <option>Microcontroller I</option>
+                              <option>Pemerograman Dasar</option>
+                              <option>Sistem DIgital</option>
+                              <option>Organisasi dan Arsitektur Komputer</option>
+                              <option>Pendidikan Agama</option>
+                              <option>Pendidikan Pancasila</option>
+                              <option>Bahasa Indonesia</option>
+                              <option>Bahasa Inggris</option>
+                            </select>
+						<label for="deadline" class="p-2">deadline</label>
+						<input type="date" class="form-control" placeholder="Masukkan deadline" name="deadline" id="deadline" required>
+
+                          <label for="editor" class="p-2">keterangan</label>
+                         <textarea class="form-control" name="ket" id="editor"></textarea>
+						</div>
+						<button type="submit" class="btn btn-success ms-4" name="tambah"><span data-feather="plus"></span> Tambah</button>
+					</form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
         </main>
-        
-        <!-- end main -->
+
         <!-- footer -->
         <?php
         include 'footer.php';
@@ -143,13 +157,12 @@ $data = query("SELECT * FROM admin");
     </div>
 
     <script src="js/app.js"></script>
-    <script src="datatables/jquery-3.5.1.js"></script>
-    <script src="datatables/jquery.dataTables.min.js"></script>
-    <script src="datatables/dataTables.bootstrap5.min.js"></script>
+    <script src="ckeditor/ckeditor/ckeditor.js"></script>
     <script>
-      $(document).ready(function () {
-    $('#example').DataTable();
-});
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor' );
     </script>
+
   </body>
 </html>
