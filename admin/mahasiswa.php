@@ -9,7 +9,7 @@ if(!isset($_SESSION['admin'])) {
 }
 
 
-$data = query("SELECT * FROM admin");
+$data = query("SELECT * FROM admin ORDER BY id ASC LIMIT 28");
 
 ?>
 

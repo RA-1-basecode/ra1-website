@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin'])) {
   exit;
 }
 
-$result = mysqli_query($conn, "SELECT * FROM admin");
+$result = mysqli_query($conn, "SELECT * FROM admin ORDER BY id ASC LIMIT 28");
 $mhs = mysqli_num_rows($result);
 
 

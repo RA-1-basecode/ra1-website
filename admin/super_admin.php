@@ -17,6 +17,12 @@ $artikel = mysqli_num_rows($result2);
 $result3 = mysqli_query($conn, "SELECT * FROM project");
 $project = mysqli_num_rows($result3);
 
+$result4 = mysqli_query($conn, "SELECT * FROM pesan");
+$pesan = mysqli_num_rows($result3);
+
+$result5 = mysqli_query($conn, "SELECT * FROM galeri");
+$galeri = mysqli_num_rows($result3);
+
 
 ?>
 
@@ -126,7 +132,7 @@ $project = mysqli_num_rows($result3);
             <h1 class="h3 mb-3"><strong>Dashboard</strong></h1>
 
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -143,14 +149,14 @@ $project = mysqli_num_rows($result3);
                     <h1 class="mt-1 mb-3"><?= $mhs; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                       <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                       <a href="super_admin_mhs"> <div class="btn btn-primary btn-sm">Detail</div></a>
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -167,20 +173,19 @@ $project = mysqli_num_rows($result3);
                     <h1 class="mt-1 mb-3"><?= $artikel; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                       <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                       <a href="super_admin_posts"> <div class="btn btn-primary btn-sm">Detail</div></a>
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
                         <h5 class="card-title">Projects</h5>
                       </div>
-
                       <div class="col-auto">
                         <div class="stat text-primary">
                           <i class="align-middle" data-feather="layers"></i>
@@ -190,7 +195,53 @@ $project = mysqli_num_rows($result3);
                     <h1 class="mt-1 mb-3"><?= $project; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                       <a href="mahasiswa"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                       <a href="super_admin_projects"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Galeri</h5>
+                      </div>
+                      <div class="col-auto">
+                        <div class="stat text-primary">
+                          <i class="align-middle" data-feather="image"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <h1 class="mt-1 mb-3"><?= $galeri; ?></h1>
+                    <div class="mb-0">
+                      <span class="text-danger">
+                       <a href="super_admin_galeri"> <div class="btn btn-primary btn-sm">Detail</div></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Pesan</h5>
+                      </div>
+                      <div class="col-auto">
+                        <div class="stat text-primary">
+                          <i class="align-middle" data-feather="bell"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <h1 class="mt-1 mb-3"><?= $pesan; ?></h1>
+                    <div class="mb-0">
+                      <span class="text-danger">
+                       <a href="super_admin_pesan"> <div class="btn btn-primary btn-sm">Detail</div></a>
                       </span>
                     </div>
                   </div>

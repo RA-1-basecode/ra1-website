@@ -1,7 +1,7 @@
 <?php
 
 require 'functions.php';
-$admin = query("SELECT * FROM admin ORDER BY id ASC");
+$admin = query("SELECT * FROM admin ORDER BY id ASC LIMIT 28");
 
 ?>
 

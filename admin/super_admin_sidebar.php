@@ -5,6 +5,13 @@
             <span class="align-middle">Super Admin kelas ra 1 Teknik Informatika</span>
           </a>
           <ul class="sidebar-nav">
+          <li class="sidebar-header">MENU</li>
+          <li class="sidebar-item">
+              <a class="sidebar-link" href="super_admin">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Dashboard</span>
+              </a>
+            </li>
 
             <li class="sidebar-header">AKSI</li>
             <li class="sidebar-item">
