@@ -6,9 +6,10 @@ if(!isset($_SESSION['super_admin'])) {
   header("location: ../.");
   exit;
 }
+
 $id = $_GET['id'];
 
-if( hapus_projects($id) > 0) {
+if(hapus_project($id) > 0) {
 
     echo '<script>
     alert("Project berhasil dihapus!");

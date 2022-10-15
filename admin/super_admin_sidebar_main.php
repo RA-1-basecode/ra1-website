@@ -58,6 +58,21 @@ $cout = mysqli_num_rows($result);
                   <span class="text-dark"><?= $data_admin['nama_lengkap']; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="super_admin_profile"
+                    ><i
+                      class="align-middle me-1"
+                      data-feather="user"
+                    ></i>
+                    Profile</a
+                  >
+                  <a class="dropdown-item" href="super_admin_settings"
+                    ><i
+                      class="align-middle me-1"
+                      data-feather="settings"
+                    ></i>
+                    Settings</a
+                  >
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout"
                     ><i
                       class="align-middle me-1"

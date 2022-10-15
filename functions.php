@@ -408,24 +408,33 @@ function upload_artikel($data) {
 function hapus_mhs($id) {
 	global $conn;
 
+	$result = mysqli_query($conn, "SELECT * FROM admin WHERE id = $id");
+		$pp = mysqli_fetch_assoc($result);
+
+		if(file_exists("foto-profile/$pp[photo]")) {
+			unlink("foto-profile/$pp[photo]");
+		}
+
 	mysqli_query($conn, "DELETE FROM admin WHERE id = $id ");
 	return mysqli_affected_rows($conn);
 }
 
+
+
 function hapus_posts($id) {
 	global $conn;
+
+	$result = mysqli_query($conn, "SELECT * FROM artikel WHERE id = $id");
+		$posts = mysqli_fetch_assoc($result);
+
+		if(file_exists("img-posts/$posts[gambar]")) {
+			unlink("img-posts/$posts[gambar]");
+		}
 
 	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
 	return mysqli_affected_rows($conn);
 
 
-
-function hapus_projects($id) {
-	global $conn;
-
-	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
 
 
 
@@ -437,13 +446,11 @@ function hapus_tugas($id) {
 	return mysqli_affected_rows($conn);
 }
 
-// hapus data mahasiswa
-function del_projects($id) {
-	global $conn;
 
-	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
+
+
+
+
 // hapus data mahasiswa
 function del_posts($id) {
 	global $conn;
@@ -469,48 +476,6 @@ function settings($data) {
 	return mysqli_affected_rows($conn);
   }
 
-
-
-
-// ubah password/settings
-// function ubah/edit
-function update_profile($data) {
-	global $conn;
-	$id = $data["id"];
-	$blockquote = $data["blockquote"];
-	$facebook = htmlspecialchars($data['facebook']);
-	$instagram = htmlspecialchars($data['instagram']);
-	$twitter = htmlspecialchars($data['twitter']);
-	$github = htmlspecialchars($data['github']);
-	$foto_lama = htmlspecialchars($data['foto_lama']);
-
-	if($_FILES['photo']['error'] === 4) {
-
-		$foto = $foto_lama;
-
-	} else if ($_FILES['photo']['size'] > 1000000){
-		echo '<script>
-		        alert("ukuran file terlalu besar!");
-				document.location.href = "profile"
-			  </script>';
-
-	} else {
-
-		$foto = upload_foto();
-	}
-  
-	$query ="UPDATE admin SET 
-	link_facebook = '$facebook',
-	link_instagram = '$instagram',
-	link_twitter = '$twitter',
-	link_github = '$github',
-	photo = '$foto',
-	blockquote = '$blockquote'
-	WHERE id = $id
-	";
-	mysqli_query($conn,$query);
-	return mysqli_affected_rows($conn);
-  }
 
 
 
@@ -590,12 +555,40 @@ function update_profile($data) {
 	}
 
 
+
+	// function hapus galeri
 	function hapus_galeri($id) {
 		global $conn;
-	
+
+		$result = mysqli_query($conn, "SELECT * FROM galeri WHERE id = $id");
+		$data = mysqli_fetch_assoc($result);
+
+		if(file_exists("galeri/$data[galeri]")) {
+			unlink("galeri/$data[galeri]");
+		}
+		
 		mysqli_query($conn, "DELETE FROM galeri WHERE id = $id ");
 		return mysqli_affected_rows($conn);
 	}
+
+
+
+	// hapus data mahasiswa
+function hapus_project($id) {
+	global $conn;
+	
+	$result = mysqli_query($conn, "SELECT * FROM project WHERE id = $id");
+		$pro = mysqli_fetch_assoc($result);
+
+		if(file_exists("img-projects/$pro[foto_project]")) {
+			unlink("img-projects/$pro[foto_project]");
+		}
+
+	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+
 
 	function hapus_pesan($id) {
 		global $conn;
@@ -603,3 +596,49 @@ function update_profile($data) {
 		mysqli_query($conn, "DELETE FROM kontak WHERE id = $id ");
 		return mysqli_affected_rows($conn);
 	}
+
+
+
+
+
+
+	
+// ubah password/settings
+// function ubah/edit
+function update_profile($data) {
+	global $conn;
+	$id = $data["id"];
+	$blockquote = $data["blockquote"];
+	$facebook = htmlspecialchars($data['facebook']);
+	$instagram = htmlspecialchars($data['instagram']);
+	$twitter = htmlspecialchars($data['twitter']);
+	$github = htmlspecialchars($data['github']);
+	$foto_lama = htmlspecialchars($data['foto_lama']);
+
+	if($_FILES['photo']['error'] === 4) {
+
+		$foto = $foto_lama;
+
+	} else if ($_FILES['photo']['size'] > 1000000){
+		echo '<script>
+		        alert("ukuran file terlalu besar!");
+				document.location.href = "profile"
+			  </script>';
+
+	} else {
+
+		$foto = upload_foto();
+	}
+  
+	$query ="UPDATE admin SET 
+	link_facebook = '$facebook',
+	link_instagram = '$instagram',
+	link_twitter = '$twitter',
+	link_github = '$github',
+	photo = '$foto',
+	blockquote = '$blockquote'
+	WHERE id = $id
+	";
+	mysqli_query($conn,$query);
+	return mysqli_affected_rows($conn);
+  }

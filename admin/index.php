@@ -8,9 +8,17 @@ if(!isset($_SESSION['admin'])) {
   exit;
 }
 
-$result = mysqli_query($conn, "SELECT * FROM admin ORDER BY id ASC LIMIT 28");
-$mhs = mysqli_num_rows($result);
+$result1 = mysqli_query($conn, "SELECT * FROM admin ORDER BY id ASC LIMIT 28");
+$mhs = mysqli_num_rows($result1);
 
+$result2 = mysqli_query($conn, "SELECT * FROM project");
+$project = mysqli_num_rows($result2);
+
+$result4 = mysqli_query($conn, "SELECT * FROM galeri");
+$galeri = mysqli_num_rows($result4);
+
+$result3 = mysqli_query($conn, "SELECT * FROM artikel");
+$artikell = mysqli_num_rows($result3);
 
 $data = query("SELECT * FROM project");
 $artikel = query("SELECT * FROM artikel");
@@ -152,18 +160,19 @@ $artikel = query("SELECT * FROM artikel");
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Upload Project</h5>
+                        <h5 class="card-title">Upload Galeri</h5>
                       </div>
 
                       <div class="col-auto">
                         <div class="stat text-primary">
-                          <i class="align-middle" data-feather="upload"></i>
+                          <i class="align-middle" data-feather="image"></i>
                         </div>
                       </div>
                     </div>
+                    <h1 class="mt-1 mb-3"><?= $galeri; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                        <a href="upload_project"><div class="btn btn-primary btn-sm"><span data-feather="upload"></span></div></a>
+                       <a href="upload_galeri"> <div class="btn btn-primary btn-sm"><span data-feather="upload"></span></div></a>
                       </span>
                     </div>
                   </div>
@@ -174,7 +183,30 @@ $artikel = query("SELECT * FROM artikel");
                   <div class="card-body">
                     <div class="row">
                       <div class="col mt-0">
-                        <h5 class="card-title">Posting Artikel</h5>
+                        <h5 class="card-title">Projects</h5>
+                      </div>
+
+                      <div class="col-auto">
+                        <div class="stat text-primary">
+                          <i class="align-middle" data-feather="layers"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <h1 class="mt-1 mb-3"><?= $project; ?></h1>
+                    <div class="mb-0">
+                      <span class="text-danger">
+                       <a href="upload_project"> <div class="btn btn-primary btn-sm"><span data-feather="upload"></span></div></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Posting</h5>
                       </div>
 
                       <div class="col-auto">
@@ -183,9 +215,10 @@ $artikel = query("SELECT * FROM artikel");
                         </div>
                       </div>
                     </div>
+                    <h1 class="mt-1 mb-3"><?= $artikell; ?></h1>
                     <div class="mb-0">
                       <span class="text-danger">
-                        <a href="post_artikel"><div class="btn btn-primary btn-sm"><span data-feather="edit-3"></span></div></a>
+                       <a href="post_artikel"> <div class="btn btn-primary btn-sm"><span data-feather="edit-3"></span></div></a>
                       </span>
                     </div>
                   </div>

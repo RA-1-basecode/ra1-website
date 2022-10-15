@@ -6,7 +6,9 @@ if(!isset($_SESSION['super_admin'])) {
   header("location: ../.");
   exit;
 }
+
 $id = $_GET['id'];
+
 
 if( hapus_galeri($id) > 0) {
 

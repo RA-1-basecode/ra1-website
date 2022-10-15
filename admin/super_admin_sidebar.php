@@ -13,6 +13,13 @@
               </a>
             </li>
 
+          <li class="sidebar-item">
+              <a class="sidebar-link" href="super_admin_profile">
+                <i class="align-middle" data-feather="user"></i>
+                <span class="align-middle">Profile</span>
+              </a>
+            </li>
+
             <li class="sidebar-header">AKSI</li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="super_admin_mhs">
