@@ -21,7 +21,7 @@ if(isset($_POST['upload'])) {
 if( upload_project($_POST) > 0) {
 
   echo '<script>
-          alert("data berhasil ditambahkan");
+          alert("Project berhasil ditambahkan");
           document.location.href = "upload_project";
         </script>';
 } else {

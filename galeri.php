@@ -201,9 +201,9 @@ $galeri = query("SELECT * FROM galeri");
                 <div class="card-header-d">
                 </div>
                 <div class="card-body-d">
-                  <p class="content-d color-text-a">
+                  <div class="content-d color-text-a">
                     <?= $row['subject']; ?>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

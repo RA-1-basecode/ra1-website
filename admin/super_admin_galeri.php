@@ -106,7 +106,8 @@ $data = query("SELECT * FROM galeri");
                             <tr>
                                 <th>No</th>
                                 <th>Subject</th>
-                                <th>Gambar</th>
+                                <th>Nama Gambar</th>
+                                <th>gambar</th>
                                 <th>Aksi</th>
                              </tr>
                                 </thead>
@@ -116,6 +117,7 @@ $data = query("SELECT * FROM galeri");
                                             <tr>
                                                 <td><?= $i; ?></td>
                                                 <td><?= $row["subject"]; ?></td>
+                                                <td><?= $row["galeri"]; ?></td>
                                                 <td><img src="galeri/<?= $row['galeri']; ?>" height="70"></td>
                                                 <td><a href="hapus_galeri?id=<?= $row['id']; ?>" onclick="return confirm('Apakah yakin ingin menghapus gambar ini?')" class="btn btn-danger btn-sm"><span data-feather="delete"></span></a>
                                                 </td>

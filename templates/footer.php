@@ -56,6 +56,11 @@ $project = query("SELECT * FROM project ORDER BY id DESC LIMIT 5");
               </div>
             </div>
           </div>
+          <div class="col-sm-12 col-md-2 section-md-t3">
+            <div class="widget-a">
+            <a href="https://info.flagcounter.com/k8Bx"><img src="https://s11.flagcounter.com/count2/k8Bx/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

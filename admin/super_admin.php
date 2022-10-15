@@ -17,12 +17,12 @@ $artikel = mysqli_num_rows($result2);
 $result3 = mysqli_query($conn, "SELECT * FROM project");
 $project = mysqli_num_rows($result3);
 
-$result4 = mysqli_query($conn, "SELECT * FROM pesan");
-$pesan = mysqli_num_rows($result3);
 
 $result5 = mysqli_query($conn, "SELECT * FROM galeri");
-$galeri = mysqli_num_rows($result3);
+$galeri = mysqli_num_rows($result5);
 
+$result4 = mysqli_query($conn, "SELECT * FROM kontak");
+$pesan = mysqli_num_rows($result4);
 
 ?>
 

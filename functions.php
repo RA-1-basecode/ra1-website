@@ -135,125 +135,108 @@ function tambah_mhs($data) {
 	}
 
 
-// hapus data mahasiswa
-function hapus_mhs($id) {
+
+
+
+		
+// upload project
+function upload_project($data) {
 	global $conn;
 
-	mysqli_query($conn, "DELETE FROM admin WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
+	$author = htmlspecialchars($data['author']);
+	$matakuliah = htmlspecialchars($data['matakuliah']);
+	$waktu = htmlspecialchars($data['waktu']);
+	$pertemuan = htmlspecialchars($data['pertemuan']);
+	$semester = htmlspecialchars($data['semester']);
+	$teknologi = htmlspecialchars($data['teknologi']);
+	$subject = htmlspecialchars($data['subject']);
+	$konten = $data['body'];
 
-function hapus_posts($id) {
-	global $conn;
+	$foto_project = upload_foto_project();
 
-	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-
-
-
-function hapus_projects($id) {
-	global $conn;
-
-	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
-
-
-
-
-function hapus_tugas($id) {
-	global $conn;
-
-	mysqli_query($conn, "DELETE FROM list_tugas WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
-
-// hapus data mahasiswa
-function del_projects($id) {
-	global $conn;
-
-	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
-// hapus data mahasiswa
-function del_posts($id) {
-	global $conn;
-
-	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
-	return mysqli_affected_rows($conn);
-}
-
-
-
-
-
-
-
-// ubah password/settings
-// function ubah/edit
-function settings($data) {
-	global $conn;
-	$id = $data["id"];
-	$password = htmlspecialchars($data["password_baru"]);
-  
-	$query ="UPDATE admin SET 
-	password = '$password'
-	WHERE id = $id
-	";
-	mysqli_query($conn,$query);
-	return mysqli_affected_rows($conn);
-  }
-
-
-
-
-// ubah password/settings
-// function ubah/edit
-function update_profile($data) {
-	global $conn;
-	$id = $data["id"];
-	$blockquote = $data["blockquote"];
-	$facebook = htmlspecialchars($data['facebook']);
-	$instagram = htmlspecialchars($data['instagram']);
-	$twitter = htmlspecialchars($data['twitter']);
-	$github = htmlspecialchars($data['github']);
-	$foto_lama = htmlspecialchars($data['foto_lama']);
-
-	if($_FILES['photo']['error'] === 4) {
-
-		$foto = $foto_lama;
-
-	} else if ($_FILES['photo']['size'] > 1000000){
-		echo '<script>
-		        alert("ukuran file terlalu besar!");
-				document.location.href = "profile"
-			  </script>';
-
-	} else {
-
-		$foto = upload_foto();
+	if( !$foto_project) {
+		return false;
 	}
-  
-	$query ="UPDATE admin SET 
-	link_facebook = '$facebook',
-	link_instagram = '$instagram',
-	link_twitter = '$twitter',
-	link_github = '$github',
-	photo = '$foto',
-	blockquote = '$blockquote'
-	WHERE id = $id
-	";
-	mysqli_query($conn,$query);
-	return mysqli_affected_rows($conn);
-  }
+
+	$query_project = "INSERT INTO project VALUES(
+		NULL,
+		'$author', 
+		'$matakuliah', 
+		'$waktu',
+		'$teknologi',
+		'$semester',
+		'$foto_project',
+		'$subject',
+		'$pertemuan',
+		'$konten'
+		) ";
+
+		mysqli_query($conn, $query_project);
+		return mysqli_affected_rows($conn);
+}
 
 
 
 
 
 
-// ////////////////////  function upload gambar artikel//////////////////////////////
 
+
+	// upload gambar/foto profile
+	function upload_foto_project() {
+
+		$nama_foto_project = $_FILES['project']['name'];
+		$ukuran_project_photo = $_FILES['project']['size'];
+		$tmp_name_project_photo = $_FILES['project']['tmp_name'];
+
+
+		$ekstensi_foto_projects_valid = ['jpg', '', 'png', 'jpeg'];
+		$ekstensi_project_foto = explode('.', $nama_foto_project);
+		$ekstensi_project_foto = strtolower(end($ekstensi_project_foto));
+
+		if( !in_array($ekstensi_project_foto, $ekstensi_foto_projects_valid)) {
+				echo '<script>
+						alert("Yang Anda upload bukan file gambar yang valid!");
+						document.location.href = "upload_project"
+					  </script>';
+					  
+			 	return false;
+		}
+
+
+		if( $ukuran_project_photo > 1000000) {
+
+			echo '<script>
+						alert("Ukuran file terlalu besar!");
+						document.location.href = "upload_project"
+					  </script>';
+
+			return false;
+		}
+
+
+		$nama_foto_project_baru = uniqid();
+		$nama_foto_project_baru .= '.';
+		$nama_foto_project_baru .= $ekstensi_project_foto;  
+
+
+		move_uploaded_file($tmp_name_project_photo, 'img-projects/' . $nama_foto_project_baru);
+
+		return $nama_foto_project_baru;
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+	
 //   upload artikel
 function upload_artikel($data) {
 	global $conn;
@@ -350,105 +333,7 @@ function upload_artikel($data) {
 
 
 
-
-
-
-
 	
-// upload project
-function upload_project($data) {
-	global $conn;
-
-	$author = htmlspecialchars($data['author']);
-	$matakuliah = htmlspecialchars($data['matakuliah']);
-	$waktu = htmlspecialchars($data['waktu']);
-	$pertemuan = htmlspecialchars($data['pertemuan']);
-	$semester = htmlspecialchars($data['semester']);
-	$teknologi = htmlspecialchars($data['teknologi']);
-	$subject = htmlspecialchars($data['subject']);
-	$konten = $data['body'];
-
-	$foto_project = upload_foto_project();
-
-	if( !$foto_project) {
-		return false;
-	}
-
-	$query_project = "INSERT INTO project VALUES(
-		NULL,
-		'$author', 
-		'$matakuliah', 
-		'$waktu',
-		'$teknologi',
-		'$semester',
-		'$foto_project',
-		'$subject',
-		'$pertemuan',
-		'$konten'
-		) ";
-
-		mysqli_query($conn, $query_project);
-		return mysqli_affected_rows($conn);
-}
-
-
-
-
-
-
-
-
-	// upload gambar/foto profile
-	function upload_foto_project() {
-
-		$nama_foto_project = $_FILES['project']['name'];
-		$ukuran_project_photo = $_FILES['project']['size'];
-		$tmp_name_project_photo = $_FILES['project']['tmp_name'];
-
-
-		$ekstensi_foto_projects_valid = ['jpg', '', 'png', 'jpeg'];
-		$ekstensi_project_foto = explode('.', $nama_foto_project);
-		$ekstensi_project_foto = strtolower(end($ekstensi_project_foto));
-
-		if( !in_array($ekstensi_project_foto, $ekstensi_foto_projects_valid)) {
-				echo '<script>
-						alert("Yang Anda upload bukan file gambar yang valid!");
-						document.location.href = "upload_project"
-					  </script>';
-					  
-			 	return false;
-		}
-
-
-		if( $ukuran_project_photo > 1000000) {
-
-			echo '<script>
-						alert("Ukuran file terlalu besar!");
-						document.location.href = "upload_project"
-					  </script>';
-
-			return false;
-		}
-
-
-		$nama_foto_project_baru = uniqid();
-		$nama_foto_project_baru .= '.';
-		$nama_foto_project_baru .= $ekstensi_project_foto;  
-
-
-		move_uploaded_file($tmp_name_project_photo, 'img-projects/' . $nama_foto_project_baru);
-
-		return $nama_foto_project_baru;
-
-
-
-
-	}
-
-
-
-
-
 
 	function upload_galeri($data) {
 		global $conn;
@@ -512,6 +397,121 @@ function upload_project($data) {
 
 
 	}
+
+
+
+
+
+
+
+// hapus data mahasiswa
+function hapus_mhs($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM admin WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+function hapus_posts($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+
+
+
+function hapus_projects($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+
+
+
+function hapus_tugas($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM list_tugas WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+// hapus data mahasiswa
+function del_projects($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM project WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+// hapus data mahasiswa
+function del_posts($id) {
+	global $conn;
+
+	mysqli_query($conn, "DELETE FROM artikel WHERE id = $id ");
+	return mysqli_affected_rows($conn);
+}
+
+
+
+// ubah password/settings
+// function ubah/edit
+function settings($data) {
+	global $conn;
+	$id = $data["id"];
+	$password = htmlspecialchars($data["password_baru"]);
+  
+	$query ="UPDATE admin SET 
+	password = '$password'
+	WHERE id = $id
+	";
+	mysqli_query($conn,$query);
+	return mysqli_affected_rows($conn);
+  }
+
+
+
+
+// ubah password/settings
+// function ubah/edit
+function update_profile($data) {
+	global $conn;
+	$id = $data["id"];
+	$blockquote = $data["blockquote"];
+	$facebook = htmlspecialchars($data['facebook']);
+	$instagram = htmlspecialchars($data['instagram']);
+	$twitter = htmlspecialchars($data['twitter']);
+	$github = htmlspecialchars($data['github']);
+	$foto_lama = htmlspecialchars($data['foto_lama']);
+
+	if($_FILES['photo']['error'] === 4) {
+
+		$foto = $foto_lama;
+
+	} else if ($_FILES['photo']['size'] > 1000000){
+		echo '<script>
+		        alert("ukuran file terlalu besar!");
+				document.location.href = "profile"
+			  </script>';
+
+	} else {
+
+		$foto = upload_foto();
+	}
+  
+	$query ="UPDATE admin SET 
+	link_facebook = '$facebook',
+	link_instagram = '$instagram',
+	link_twitter = '$twitter',
+	link_github = '$github',
+	photo = '$foto',
+	blockquote = '$blockquote'
+	WHERE id = $id
+	";
+	mysqli_query($conn,$query);
+	return mysqli_affected_rows($conn);
+  }
+
 
 
 
